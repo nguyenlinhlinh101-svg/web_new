@@ -154,7 +154,7 @@
                         <div class="grid grid-cols-2 gap-5">
                             <div>
                                 <label class="block text-sm font-bold text-slate-300 uppercase tracking-wider mb-2.5">Tuổi
-
+                                    
                                 </label>
                                 <input type="number" id="age" min="15" max="35" value="21" class="w-full bg-[#12141f] border border-slate-700 rounded-lg px-4 py-3 text-white font-semibold focus:outline-none focus:border-[#80ED99] transition text-lg">
                             </div>
@@ -548,50 +548,48 @@
                             <p><b>Tối ưu hóa môi trường không gian:</b> Tiếp tục duy trì phong độ này. Hãy thiết kế góc học tập của bạn thật gọn gàng, ánh sáng đầy đủ và chỉ để những tài liệu liên quan đến đúng môn học đó để loại bỏ hoàn toàn 100% tác nhân xao nhãng nghe nhìn.</p>
                        </div>`;
             }
+            // Ô VUÔNG 3: GIẤC NGỦ & STRESS
+            if (sleep < 6.5) {
+                p3 += `<div class="space-y-2">
+                    <p><b>Thiếu hụt năng lượng gốc:</b> Việc chỉ ngủ ${sleep} giờ/đêm khiến não bộ không có đủ thời gian phục hồi, làm giảm khả năng tập trung và ghi nhớ.</p>
+                    <p><b>Quá tải áp lực (Stress mức ${stress}):</b> Căng thẳng kéo dài làm bạn dễ mệt mỏi, cáu gắt và mất động lực học tập.</p>
+                </div>`;
 
-            // // Ô VUÔNG 3: GIẤC NGỦ & STRESS
-if (sleep < 6.5) {
-    p3 += `<div class="space-y-2">
-        <p><b>Thiếu hụt năng lượng gốc:</b> Việc chỉ ngủ ${sleep} giờ/đêm khiến não bộ không có đủ thời gian phục hồi, làm giảm khả năng tập trung và ghi nhớ.</p>
-        <p><b>Quá tải áp lực (Stress mức ${stress}):</b> Căng thẳng kéo dài làm bạn dễ mệt mỏi, cáu gắt và mất động lực học tập.</p>
-    </div>`;
+                s3 += `<div class="space-y-2">
+                    <p><b>Thiết lập giờ ngủ cố định:</b> Ưu tiên ngủ sớm hơn và giữ lịch ngủ đều đặn trong vài ngày liên tiếp.</p>
+                    <p><b>Giải tỏa căng thẳng ngắn:</b> Đi bộ 10 phút, hít thở sâu hoặc tạm rời màn hình trước khi học tiếp.</p>
+                </div>`;
+            }
+            else if (sleep > 9.5) {
+                p3 += `<div class="space-y-2">
+                    <p><b>Ngủ quá nhiều nhưng phục hồi chưa hiệu quả:</b> Bạn đang ngủ ${sleep} giờ/đêm, cao hơn mức khuyến nghị thông thường. Điều này có thể phản ánh mệt mỏi tích lũy, lịch sinh hoạt lệch nhịp hoặc thiếu vận động ban ngày.</p>
+                    <p><b>Áp lực tinh thần (Stress mức ${stress}):</b> Khi căng thẳng cao, ngủ nhiều không đồng nghĩa với hồi phục tốt hơn; bạn vẫn có thể thấy uể oải và khó bắt đầu công việc.</p>
+                </div>`;
 
-    s3 += `<div class="space-y-2">
-        <p><b>Thiết lập giờ ngủ cố định:</b> Ưu tiên ngủ sớm hơn và giữ lịch ngủ đều đặn trong vài ngày liên tiếp.</p>
-        <p><b>Giải tỏa căng thẳng ngắn:</b> Đi bộ 10 phút, hít thở sâu hoặc tạm rời màn hình trước khi học tiếp.</p>
-    </div>`;
-}
-else if (sleep > 9.5) {
-    p3 += `<div class="space-y-2">
-        <p><b>Ngủ quá nhiều nhưng phục hồi chưa hiệu quả:</b> Bạn đang ngủ ${sleep} giờ/đêm, cao hơn mức khuyến nghị thông thường. Điều này có thể phản ánh mệt mỏi tích lũy, lịch sinh hoạt lệch nhịp hoặc thiếu vận động ban ngày.</p>
-        <p><b>Áp lực tinh thần (Stress mức ${stress}):</b> Khi căng thẳng cao, ngủ nhiều không đồng nghĩa với hồi phục tốt hơn; bạn vẫn có thể thấy uể oải và khó bắt đầu công việc.</p>
-    </div>`;
+                s3 += `<div class="space-y-2">
+                    <p><b>Ổn định lại nhịp sinh học:</b> Giảm dần thời lượng ngủ về khoảng 7–9 giờ/đêm, thức dậy cố định một khung giờ mỗi ngày.</p>
+                    <p><b>Tăng vận động nhẹ ban ngày:</b> Đi bộ, giãn cơ hoặc ra ngoài nhận ánh sáng tự nhiên để cơ thể tỉnh táo hơn.</p>
+                </div>`;
+            }
+            else if (stress > 6) {
+                p3 += `<div class="space-y-2">
+                    <p><b>Giấc ngủ đủ nhưng áp lực còn cao:</b> Bạn ngủ khoảng ${sleep} giờ/đêm, tương đối ổn, nhưng stress mức ${stress} cho thấy tinh thần vẫn đang chịu tải lớn.</p>
+                    <p><b>Rủi ro chính:</b> Căng thẳng cao có thể làm giảm chất lượng tập trung dù thời lượng ngủ không thiếu.</p>
+                </div>`;
 
-    s3 += `<div class="space-y-2">
-        <p><b>Ổn định lại nhịp sinh học:</b> Giảm dần thời lượng ngủ về khoảng 7–9 giờ/đêm, thức dậy cố định một khung giờ mỗi ngày.</p>
-        <p><b>Tăng vận động nhẹ ban ngày:</b> Đi bộ, giãn cơ hoặc ra ngoài nhận ánh sáng tự nhiên để cơ thể tỉnh táo hơn.</p>
-    </div>`;
-}
-else if (stress > 6) {
-    p3 += `<div class="space-y-2">
-        <p><b>Giấc ngủ đủ nhưng áp lực còn cao:</b> Bạn ngủ khoảng ${sleep} giờ/đêm, tương đối ổn, nhưng stress mức ${stress} cho thấy tinh thần vẫn đang chịu tải lớn.</p>
-        <p><b>Rủi ro chính:</b> Căng thẳng cao có thể làm giảm chất lượng tập trung dù thời lượng ngủ không thiếu.</p>
-    </div>`;
+                s3 += `<div class="space-y-2">
+                    <p><b>Giảm tải tinh thần:</b> Chia việc học thành từng phiên 25 phút, nghỉ 5 phút và tránh ôm quá nhiều nhiệm vụ cùng lúc.</p>
+                    <p><b>Xả stress có kiểm soát:</b> Dùng vận động ngắn, nghe nhạc nhẹ hoặc viết checklist thay vì lướt điện thoại quá lâu.</p>
+                </div>`;
+            }
+            else {
+                p3 += `<div class="space-y-2">
+                    <p><b>Nền tảng thể chất ổn định:</b> Giấc ngủ ${sleep} giờ/đêm đang nằm trong vùng hợp lý, giúp duy trì năng lượng và khả năng tập trung.</p>
+                </div>`;
 
-    s3 += `<div class="space-y-2">
-        <p><b>Giảm tải tinh thần:</b> Chia việc học thành từng phiên 25 phút, nghỉ 5 phút và tránh ôm quá nhiều nhiệm vụ cùng lúc.</p>
-        <p><b>Xả stress có kiểm soát:</b> Dùng vận động ngắn, nghe nhạc nhẹ hoặc viết checklist thay vì lướt điện thoại quá lâu.</p>
-    </div>`;
-}
-else {
-    p3 += `<div class="space-y-2">
-        <p><b>Nền tảng thể chất ổn định:</b> Giấc ngủ ${sleep} giờ/đêm đang nằm trong vùng hợp lý, giúp duy trì năng lượng và khả năng tập trung.</p>
-    </div>`;
-
-    s3 += `<div class="space-y-2">
-        <p><b>Duy trì nhịp sinh học đều đặn:</b> Tiếp tục giữ giờ ngủ, giờ thức dậy ổn định và hạn chế dùng điện thoại sát giờ ngủ.</p>
-    </div>`;
-}
+                s3 += `<div class="space-y-2">
+                    <p><b>Duy trì nhịp sinh học đều đặn:</b> Tiếp tục giữ giờ ngủ, giờ thức dậy ổn định và hạn chế dùng điện thoại sát giờ ngủ.</p>
+                </div>`;
             }
 
             // Đẩy toàn bộ nội dung phân tích sâu vào giao diện
