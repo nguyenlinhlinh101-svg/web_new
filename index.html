@@ -154,7 +154,7 @@
                         <div class="grid grid-cols-2 gap-5">
                             <div>
                                 <label class="block text-sm font-bold text-slate-300 uppercase tracking-wider mb-2.5">Tuổi
-                                    
+
                                 </label>
                                 <input type="number" id="age" min="15" max="35" value="21" class="w-full bg-[#12141f] border border-slate-700 rounded-lg px-4 py-3 text-white font-semibold focus:outline-none focus:border-[#80ED99] transition text-lg">
                             </div>
@@ -549,25 +549,49 @@
                        </div>`;
             }
 
-            // Ô VUÔNG 3: GIẤC NGỦ & STRESS
-            if (sleep < 6.5 || stress > 6) {
-                p3 += `<div class="space-y-2">
-                            <p><b>Khủng hoảng năng lượng gốc:</b> Việc chỉ ngủ ${sleep} giờ/đêm đang tước đi cơ hội để bộ não dọn dẹp các độc chất tích tụ ban ngày và sắp xếp lại bộ nhớ. Bạn sẽ dễ rơi vào trạng thái "sương mù não" - đầu óc trống rỗng, phản xạ chậm khi tiếp thu thông tin mới.</p>
-                            <p><b>Quá tải áp lực (Stress mức ${stress}):</b> Sự căng thẳng kéo dài khiến tinh thần bạn luôn bật chế độ phòng thủ, dễ gây ra cảm giác cáu gắt, chán nản, mệt mỏi kinh niên dẫn đến việc không còn năng lượng để bám đuổi các mục tiêu dài hạn.</p>
-                       </div>`;
-                
-                s3 += `<div class="space-y-2">
-                            <p><b>Thiết lập "Lệnh giới nghiêm màn hình":</b> Tắt toàn bộ thiết bị điện tử ít nhất 30 phút trước khi ngủ. Ánh sáng xanh từ màn hình đánh lừa bộ não rằng trời vẫn sáng, làm trì hoãn giấc ngủ sâu. Hãy thay bằng việc đọc một vài trang sách giấy.</p>
-                            <p><b>Giải tỏa căng thẳng bằng vận động ngắn:</b> Mỗi khi thấy đầu óc quá tải, hãy áp dụng nguyên tắc xả stress bằng cách đứng dậy đi bộ nhanh, tập vài động tác giãn cơ hoặc chạy bộ nhẹ nhàng trong 15-20 phút. Vận động thể chất giúp cơ thể sản sinh các chất dẫn truyền thần kinh tạo cảm giác sảng khoái tự nhiên.</p>
-                       </div>`;
-            } else {
-                p3 += `<div class="space-y-2">
-                            <p><b>Nền tảng thể chất lý tưởng:</b> Giấc ngủ ổn định ${sleep} giờ chính là chìa khóa vàng giúp cơ thể bạn phục hồi toàn diện. Mức độ áp lực nhẹ nhàng cho thấy bạn đang làm chủ cuộc sống rất tốt, tâm trí bình an giúp nâng cao khả năng sáng tạo.</p>
-                       </div>`;
-                
-                s3 += `<div class="space-y-2">
-                            <p><b>Duy trì nhịp sinh học đều đặn:</b> Hãy cố gắng đi ngủ và thức dậy vào những khung giờ giống nhau kể cả vào ngày cuối tuần. Sự nhất quán này giúp đồng hồ sinh học chạy chuẩn xác, mang lại năng lượng bền bỉ suốt cả ngày dài.</p>
-                       </div>`;
+            // // Ô VUÔNG 3: GIẤC NGỦ & STRESS
+if (sleep < 6.5) {
+    p3 += `<div class="space-y-2">
+        <p><b>Thiếu hụt năng lượng gốc:</b> Việc chỉ ngủ ${sleep} giờ/đêm khiến não bộ không có đủ thời gian phục hồi, làm giảm khả năng tập trung và ghi nhớ.</p>
+        <p><b>Quá tải áp lực (Stress mức ${stress}):</b> Căng thẳng kéo dài làm bạn dễ mệt mỏi, cáu gắt và mất động lực học tập.</p>
+    </div>`;
+
+    s3 += `<div class="space-y-2">
+        <p><b>Thiết lập giờ ngủ cố định:</b> Ưu tiên ngủ sớm hơn và giữ lịch ngủ đều đặn trong vài ngày liên tiếp.</p>
+        <p><b>Giải tỏa căng thẳng ngắn:</b> Đi bộ 10 phút, hít thở sâu hoặc tạm rời màn hình trước khi học tiếp.</p>
+    </div>`;
+}
+else if (sleep > 9.5) {
+    p3 += `<div class="space-y-2">
+        <p><b>Ngủ quá nhiều nhưng phục hồi chưa hiệu quả:</b> Bạn đang ngủ ${sleep} giờ/đêm, cao hơn mức khuyến nghị thông thường. Điều này có thể phản ánh mệt mỏi tích lũy, lịch sinh hoạt lệch nhịp hoặc thiếu vận động ban ngày.</p>
+        <p><b>Áp lực tinh thần (Stress mức ${stress}):</b> Khi căng thẳng cao, ngủ nhiều không đồng nghĩa với hồi phục tốt hơn; bạn vẫn có thể thấy uể oải và khó bắt đầu công việc.</p>
+    </div>`;
+
+    s3 += `<div class="space-y-2">
+        <p><b>Ổn định lại nhịp sinh học:</b> Giảm dần thời lượng ngủ về khoảng 7–9 giờ/đêm, thức dậy cố định một khung giờ mỗi ngày.</p>
+        <p><b>Tăng vận động nhẹ ban ngày:</b> Đi bộ, giãn cơ hoặc ra ngoài nhận ánh sáng tự nhiên để cơ thể tỉnh táo hơn.</p>
+    </div>`;
+}
+else if (stress > 6) {
+    p3 += `<div class="space-y-2">
+        <p><b>Giấc ngủ đủ nhưng áp lực còn cao:</b> Bạn ngủ khoảng ${sleep} giờ/đêm, tương đối ổn, nhưng stress mức ${stress} cho thấy tinh thần vẫn đang chịu tải lớn.</p>
+        <p><b>Rủi ro chính:</b> Căng thẳng cao có thể làm giảm chất lượng tập trung dù thời lượng ngủ không thiếu.</p>
+    </div>`;
+
+    s3 += `<div class="space-y-2">
+        <p><b>Giảm tải tinh thần:</b> Chia việc học thành từng phiên 25 phút, nghỉ 5 phút và tránh ôm quá nhiều nhiệm vụ cùng lúc.</p>
+        <p><b>Xả stress có kiểm soát:</b> Dùng vận động ngắn, nghe nhạc nhẹ hoặc viết checklist thay vì lướt điện thoại quá lâu.</p>
+    </div>`;
+}
+else {
+    p3 += `<div class="space-y-2">
+        <p><b>Nền tảng thể chất ổn định:</b> Giấc ngủ ${sleep} giờ/đêm đang nằm trong vùng hợp lý, giúp duy trì năng lượng và khả năng tập trung.</p>
+    </div>`;
+
+    s3 += `<div class="space-y-2">
+        <p><b>Duy trì nhịp sinh học đều đặn:</b> Tiếp tục giữ giờ ngủ, giờ thức dậy ổn định và hạn chế dùng điện thoại sát giờ ngủ.</p>
+    </div>`;
+}
             }
 
             // Đẩy toàn bộ nội dung phân tích sâu vào giao diện
