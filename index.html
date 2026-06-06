@@ -1,1 +1,668 @@
-hello
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Student Behavior & Productivity Analytics</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body { 
+            font-family: 'Lexend', sans-serif; 
+            background-color: #06070a;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        .cyber-bg {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: -2;
+            background-image: 
+                linear-gradient(rgba(128, 237, 153, 0.015) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(128, 237, 153, 0.015) 1px, transparent 1px);
+            background-size: 40px 40px;
+            background-position: center;
+        }
+        
+        @keyframes drift {
+            0% { transform: translate(0px, 0px) scale(1); }
+            50% { transform: translate(30px, -8px) scale(1.15); }
+            100% { transform: translate(0px, 0px) scale(1); }
+        }
+        .glow-orb-1 {
+            position: fixed; top: 15%; left: 10%; width: 500px; height: 500px;
+            background: radial-gradient(circle, rgba(128, 237, 153, 0.04) 0%, transparent 70%);
+            z-index: -1; filter: blur(50px); animation: drift 11s ease-in-out infinite;
+        }
+
+        /* Khung hộp Neon siêu phát sáng cho tiêu đề chính */
+        .header-neon-box {
+            background: rgba(9, 11, 18, 0.85);
+            border: 2px solid #80ED99;
+            box-shadow: 0 0 20px rgba(128, 237, 153, 0.2), 
+                        inset 0 0 15px rgba(128, 237, 153, 0.08);
+            backdrop-filter: blur(12px);
+        }
+        .optime-glow {
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.6),
+                         0 0 20px #80ED99,
+                         0 0 40px #80ED99,
+                         0 0 60px rgba(128, 237, 153, 0.5);
+        }
+        .neon-card {
+            background: rgba(12, 14, 22, 0.9);
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.65);
+            backdrop-filter: blur(16px);
+            transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), 
+                        box-shadow 0.3s cubic-bezier(0.25, 1, 0.5, 1), 
+                        border-color 0.3s ease;
+        }
+        .neon-card-green:hover {
+            border-color: #80ED99;
+            box-shadow: 0 15px 35px rgba(128, 237, 153, 0.15);
+            transform: translateY(-2px);
+        }
+        .neon-card-red:hover {
+            border-color: #FF6961;
+            box-shadow: 0 15px 35px rgba(255, 105, 97, 0.15);
+            transform: translateY(-2px);
+        }
+        
+        .step-transition { 
+            transition: all 0.35s ease-in-out; 
+        }
+        
+        input[type="range"] {
+            -webkit-appearance: none;
+            appearance: none;
+            height: 6px;
+            border-radius: 9999px;
+            background: #161924;
+            outline: none;
+        }
+        
+        input[type="range"].range-green::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #80ED99;
+            cursor: pointer;
+            box-shadow: 0 0 12px #80ED99;
+            border: none;
+            transition: transform 0.15s, box-shadow 0.15s;
+        }
+        input[type="range"].range-green::-webkit-slider-thumb:hover {
+            transform: scale(1.25);
+            box-shadow: 0 0 18px #80ED99;
+        }
+
+        input[type="range"].range-red::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #FF6961;
+            cursor: pointer;
+            box-shadow: 0 0 12px #FF6961;
+            border: none;
+            transition: transform 0.15s, box-shadow 0.15s;
+        }
+        input[type="range"].range-red::-webkit-slider-thumb:hover {
+            transform: scale(1.25);
+            box-shadow: 0 0 18px #FF6961;
+        }
+    </style>
+</head>
+<body class="text-[#e2e8f0] min-h-screen antialiased pb-24">
+
+    <div class="cyber-bg"></div>
+    <div class="glow-orb-1"></div>
+
+    <main class="max-w-6xl mx-auto px-6 pt-12 md:pt-16">
+        
+        <!-- ================= TRANG 1: INPUT CHỈ SỐ ================= -->
+        <section id="step-input" class="step-transition opacity-100 translate-x-0">
+            
+            <!-- KHU VỰC TIÊU ĐỀ: LẤY THEO CHUẨN MẪU ẢNH image_1df501.png -->
+            <div class="mb-12 max-w-4xl mx-auto text-center">
+                <div class="header-neon-box p-8 md:p-10 rounded-xl w-full">
+                    <span class="text-xs font-black tracking-[0.3em] text-[#80ED99] uppercase drop-shadow-[0_0_8px_rgba(128,237,153,0.5)] block mb-5">
+                        STUDENT BEHAVIOR & PRODUCTIVITY ANALYTICS
+                    </span>
+                    <h1 class="text-5xl md:text-7xl font-black tracking-wider text-white uppercase optime-glow leading-none mb-6">
+                        OPTIME
+                    </h1>
+                    <p class="text-slate-400 font-medium text-sm md:text-lg max-w-2xl mx-auto tracking-wide">
+                        Hệ thống phân tích hành vi và dự báo năng suất
+                    </p>
+                </div>
+            </div>
+            <div class="neon-card p-6 md:p-10 rounded-2xl space-y-9 border border-slate-800">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 text-base">
+                    
+                    <div class="space-y-8">
+                        <h3 class="text-base font-black text-[#80ED99] uppercase tracking-widest border-b border-slate-800 pb-2 drop-shadow-[0_0_5px_rgba(128,237,153,0.3)]">
+                            01 / Học Tập & Năng Suất Gốc
+                        </h3>
+                        
+                        <div class="grid grid-cols-2 gap-5">
+                            <div>
+                                <label class="block text-sm font-bold text-slate-300 uppercase tracking-wider mb-2.5">Tuổi học viên</label>
+                                <input type="number" id="age" min="15" max="35" value="21" class="w-full bg-[#12141f] border border-slate-700 rounded-lg px-4 py-3 text-white font-semibold focus:outline-none focus:border-[#80ED99] transition text-lg">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-bold text-slate-300 uppercase tracking-wider mb-2.5">Giới tính</label>
+                                <select id="gender" class="w-full bg-[#12141f] border border-slate-700 rounded-lg px-4 py-3 text-white font-semibold focus:outline-none focus:border-[#80ED99] transition text-lg cursor-pointer">
+                                    <option value="Male">Nam (Male)</option>
+                                    <option value="Female">Nữ (Female)</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="flex justify-between text-base mb-2.5">
+                                <span class="text-slate-200 font-medium">Giờ tự học / ngày</span>
+                                <span class="font-black text-[#80ED99] text-xl"><span id="val_study" class="mr-1">4.5</span> giờ</span>
+                            </div>
+                            <input type="range" id="study_hours" min="0" max="12" step="0.1" value="4.5" class="w-full range-green">
+                        </div>
+
+                        <div>
+                            <div class="flex justify-between text-base mb-2.5">
+                                <span class="text-slate-200 font-medium">Điểm tập trung khi học</span>
+                                <span class="font-black text-[#80ED99] text-xl"><span id="val_focus" class="mr-1">55</span> / 100</span>
+                            </div>
+                            <input type="range" id="focus_score" min="1" max="100" value="55" class="w-full range-green">
+                        </div>
+
+                        <div>
+                            <div class="flex justify-between text-base mb-2.5">
+                                <span class="text-slate-200 font-medium">Tỷ lệ bài tập đã hoàn thành</span>
+                                <span class="font-black text-[#80ED99] text-xl"><span id="val_assign" class="mr-1">65</span> %</span>
+                            </div>
+                            <input type="range" id="assignments" min="0" max="100" value="65" class="w-full range-green">
+                        </div>
+
+                        <div>
+                            <div class="flex justify-between text-base mb-2.5">
+                                <span class="text-slate-200 font-medium">Tỷ lệ đi học trên lớp</span>
+                                <span class="font-black text-[#80ED99] text-xl"><span id="val_attend" class="mr-1">80</span> %</span>
+                            </div>
+                            <input type="range" id="attendance" min="0" max="100" value="80" class="w-full range-green">
+                        </div>
+
+                        <div>
+                            <div class="flex justify-between text-base mb-2.5">
+                                <span class="text-slate-200 font-medium">Điểm số trung bình dự kiến (Final Grade)</span>
+                                <span class="font-black text-[#80ED99] text-xl"><span id="val_gpa" class="mr-1">65</span> / 100</span>
+                            </div>
+                            <input type="range" id="final_grade" min="0" max="100" value="65" class="w-full range-green">
+                        </div>
+                    </div>
+
+                    <div class="space-y-8">
+                        <h3 class="text-base font-black text-[#FF6961] uppercase tracking-widest border-b border-slate-800 pb-2 drop-shadow-[0_0_5px_rgba(255,105,97,0.3)]">
+                            02 / Đời Sống & Tác Nhân Ngoại Cảnh
+                        </h3>
+
+                        <div>
+                            <div class="flex justify-between text-base mb-2.5">
+                                <span class="text-slate-200 font-medium">Tổng thời gian dùng Smartphone / ngày</span>
+                                <span class="font-black text-[#FF6961] text-xl"><span id="val_phone" class="mr-1">4.2</span> giờ</span>
+                            </div>
+                            <input type="range" id="phone_hours" min="0" max="15" step="0.1" value="4.2" class="w-full range-red">
+                        </div>
+
+                        <div class="grid grid-cols-3 gap-4">
+                            <div class="bg-[#12141f] p-3.5 rounded-xl border border-slate-700/80">
+                                <label class="block text-xs text-slate-400 mb-1.5 font-bold uppercase tracking-wider">Mạng Xã Hội</label>
+                                <input type="number" id="social_media" min="0" max="10" step="0.5" value="2.0" class="w-full bg-transparent font-black text-[#FF6961] focus:outline-none text-2xl">
+                                <span class="text-xs text-slate-500 block mt-0.5">giờ/ngày</span>
+                            </div>
+                            <div class="bg-[#12141f] p-3.5 rounded-xl border border-slate-700/80">
+                                <label class="block text-xs text-slate-400 mb-1.5 font-bold uppercase tracking-wider">YouTube</label>
+                                <input type="number" id="youtube" min="0" max="10" step="0.5" value="1.5" class="w-full bg-transparent font-black text-[#FF6961] focus:outline-none text-2xl">
+                                <span class="text-xs text-slate-500 block mt-0.5">giờ/ngày</span>
+                            </div>
+                            <div class="bg-[#12141f] p-3.5 rounded-xl border border-slate-700/80">
+                                <label class="block text-xs text-slate-400 mb-1.5 font-bold uppercase tracking-wider">Chơi Game</label>
+                                <input type="number" id="gaming" min="0" max="10" step="0.5" value="2.1" class="w-full bg-transparent font-black text-[#FF6961] focus:outline-none text-2xl">
+                                <span class="text-xs text-slate-500 block mt-0.5">giờ/ngày</span>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="flex justify-between text-base mb-2.5">
+                                <span class="text-slate-200 font-medium">Thời gian ngủ mỗi đêm</span>
+                                <span class="font-black text-[#80ED99] text-xl"><span id="val_sleep" class="mr-1">6.5</span> giờ</span>
+                            </div>
+                            <input type="range" id="sleep_hours" min="3" max="11" step="0.1" value="6.5" class="w-full range-green">
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-5">
+                            <div class="bg-[#12141f] p-4 rounded-xl border border-slate-700/80">
+                                <label class="block text-xs text-slate-400 mb-1.5 font-bold uppercase tracking-wider">Caffeine nạp vào</label>
+                                <input type="number" id="coffee" min="0" max="600" step="10" value="150" class="w-full bg-transparent font-black text-white focus:outline-none text-2xl">
+                                <span class="text-xs text-slate-500">mg/ngày</span>
+                            </div>
+                            <div class="bg-[#12141f] p-4 rounded-xl border border-slate-700/80">
+                                <label class="block text-xs text-slate-400 mb-1.5 font-bold uppercase tracking-wider">Tập thể dục</label>
+                                <input type="number" id="exercise" min="0" max="180" step="5" value="30" class="w-full bg-transparent font-black text-white focus:outline-none text-2xl">
+                                <span class="text-xs text-slate-500">phút/ngày</span>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="flex justify-between text-base mb-2.5">
+                                <span class="text-slate-200 font-medium">Mức độ Stress áp lực (1-10)</span>
+                                <span class="font-black text-[#FF6961] text-xl"><span id="val_stress" class="mr-1">6</span> / 10</span>
+                            </div>
+                            <input type="range" id="stress_level" min="1" max="10" value="6" class="w-full range-red">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pt-4">
+                    <button type="button" id="btnRunDashboard" class="w-full bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-400 hover:to-teal-500 text-[#06070a] font-black text-base py-4.5 rounded-xl transition duration-300 cursor-pointer text-center tracking-widest uppercase shadow-[0_0_20px_rgba(128,237,153,0.3)] hover:scale-[1.002]">
+                        PHÂN TÍCH HÀNH VI
+                    </button>
+                </div>
+            </div>
+        </section>
+
+
+        <section id="step-output" class="step-transition hidden opacity-0 translate-x-12">
+            
+            <button type="button" id="btnBack" class="mb-8 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-slate-400 hover:text-white transition cursor-pointer bg-[#10121b] px-5 py-3 rounded-lg border border-slate-800">
+                ← Quay lại tùy chỉnh chỉ số
+            </button>
+
+            <div class="grid grid-cols-1 md:grid-cols-5 gap-6 mb-10">
+                <div class="neon-card p-8 rounded-2xl text-center flex flex-col justify-center items-center bg-[#10121b] border border-slate-800 md:col-span-2">
+                    <h3 class="text-[10px] font-bold text-slate-500 uppercase tracking-widest">DIAGNOSTIC OUTPUT</h3>
+                    <h2 class="text-xs font-bold text-slate-400 mt-1 uppercase tracking-wider">PRODUCTIVITY SCORE</h2>
+                    <div class="my-4 flex items-baseline justify-center">
+                        <span id="finalScoreDisplay" class="text-8xl font-black text-white tracking-tighter"><span id="txtProductivityScore"
+      class="text-8xl font-black text-white tracking-tighter">0</span>
+                        <span class="text-xl font-bold text-slate-500 ml-3"> / 100</span>
+                    </div>
+                    <div id="statusPill" class="inline-block px-4 py-1.5 rounded-md text-xs font-black uppercase tracking-widest border">...</div>
+                </div>
+
+                <div class="neon-card p-6 rounded-2xl bg-[#10121b] border border-slate-800 md:col-span-3 flex flex-col justify-between">
+                    <h3 class="text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-2">ĐỒ THỊ ĐO LƯỜNG TỐC ĐỘ NĂNG SUẤT THỜI GIAN THỰC</h3>
+                    <div class="relative w-full h-36 flex items-center justify-center">
+                        <canvas id="chartProductivity"></canvas>
+                    </div>
+                    <div class="flex justify-between text-[11px] font-bold text-slate-500 uppercase px-4 border-t border-slate-800 pt-2">
+                        <span>Thiếu hụt</span>
+                        <span>Cân bằng</span>
+                        <span>Tối ưu</span>
+                    </div>
+                </div>
+            </div>
+
+            <h3 class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-4 flex items-center gap-2">
+                Phân Tích Trực Diện Từng Chỉ Số Hành Vi
+            </h3>
+            <div id="metricAnalysisContainer" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-12">
+                </div>
+
+            <div class="space-y-12">
+                
+                <div class="space-y-4">
+                    <h3 class="text-sm font-black text-[#FF6961] uppercase tracking-widest border-b border-slate-800/80 pb-3 drop-shadow-[0_0_6px_rgba(255,105,97,0.4)]">
+                        [!] PHÂN TÍCH RỦI RO & BẪY TRÌ HOÃN THỰC TẾ (PROBLEM)
+                    </h3>
+                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                        <div class="neon-card p-6 rounded-xl bg-[#0e101a] border border-slate-800/80">
+                            <h4 class="text-xs font-bold text-[#FF6961] uppercase mb-3 tracking-wider">01. Quản lý thời gian & Tiến độ bài tập</h4>
+                            <div id="p-box-1" class="text-xs leading-relaxed text-slate-300 space-y-4">Đang tính toán...</div>
+                        </div>
+                        <div class="neon-card p-6 rounded-xl bg-[#0e101a] border border-slate-800/80">
+                            <h4 class="text-xs font-bold text-[#FF6961] uppercase mb-3 tracking-wider">02. Sức bền tập trung & Thói quen thiết bị</h4>
+                            <div id="p-box-2" class="text-xs leading-relaxed text-slate-300 space-y-4">Đang tính toán...</div>
+                        </div>
+                        <div class="neon-card p-6 rounded-xl bg-[#0e101a] border border-slate-800/80">
+                            <h4 class="text-xs font-bold text-[#FF6961] uppercase mb-3 tracking-wider">03. Năng lượng cơ thể & Áp lực tinh thần</h4>
+                            <div id="p-box-3" class="text-xs leading-relaxed text-slate-300 space-y-4">Đang tính toán...</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="space-y-4">
+                    <h3 class="text-sm font-black text-[#80ED99] uppercase tracking-widest border-b border-slate-800/80 pb-3 drop-shadow-[0_0_6px_rgba(128,237,153,0.4)]">
+                        [✔] CHIẾN LƯỢC CAN THIỆP HÀNH ĐỘNG CỤ THỂ (SOLUTION)
+                    </h3>
+                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                        <div class="neon-card p-6 rounded-xl bg-[#0e101a] border border-slate-800/80">
+                            <h4 class="text-xs font-bold text-[#80ED99] uppercase mb-3 tracking-wider">01. Kế hoạch dứt điểm bài vở tồn đọng</h4>
+                            <div id="s-box-1" class="text-xs leading-relaxed text-slate-300 space-y-4">Đang cấu trúc giải pháp...</div>
+                        </div>
+                        <div class="neon-card p-6 rounded-xl bg-[#0e101a] border border-slate-800/80">
+                            <h4 class="text-xs font-bold text-[#80ED99] uppercase mb-3 tracking-wider">02. Cai nghiện xao nhãng & Cách ly điện thoại</h4>
+                            <div id="s-box-2" class="text-xs leading-relaxed text-slate-300 space-y-4">Đang cấu trúc giải pháp...</div>
+                        </div>
+                        <div class="neon-card p-6 rounded-xl bg-[#0e101a] border border-slate-800/80">
+                            <h4 class="text-xs font-bold text-[#80ED99] uppercase mb-3 tracking-wider">03. Quy trình sạc năng lượng & Xả áp lực nhanh</h4>
+                            <div id="s-box-3" class="text-xs leading-relaxed text-slate-300 space-y-4">Đang cấu trúc giải pháp...</div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
+    </main>
+
+    <script>
+        function updateSliderTrack(slider, isGreen) {
+            const min = slider.min || 0;
+            const max = slider.max || 100;
+            const value = slider.value;
+            const percentage = ((value - min) / (max - min)) * 100;
+            const fillColor = isGreen ? '#80ED99' : '#FF6961';
+            slider.style.background = `linear-gradient(to right, ${fillColor} 0%, ${fillColor} ${percentage}%, #161924 ${percentage}%, #161924 100%)`;
+        }
+
+        const sliderConfig = {
+            'study_hours': { view: 'val_study', green: true },
+            'focus_score': { view: 'val_focus', green: true },
+            'assignments': { view: 'val_assign', green: true },
+            'attendance': { view: 'val_attend', green: true },
+            'final_grade': { view: 'val_gpa', green: true },
+            'phone_hours': { view: 'val_phone', green: false },
+            'sleep_hours': { view: 'val_sleep', green: true },
+            'stress_level': { view: 'val_stress', green: false }
+        };
+
+        Object.keys(sliderConfig).forEach(key => {
+            const slider = document.getElementById(key);
+            const viewElement = document.getElementById(sliderConfig[key].view);
+            const isGreen = sliderConfig[key].green;
+            
+            updateSliderTrack(slider, isGreen);
+            slider.addEventListener('input', () => { 
+                viewElement.innerText = slider.value; 
+                updateSliderTrack(slider, isGreen);
+            });
+        });
+
+        let chartInstance = null;
+
+        function animateNumber(targetId, targetValue) {
+            let current = 0;
+            const duration = 800; 
+            const stepTime = 15;
+            const steps = duration / stepTime;
+            const increment = targetValue / steps;
+            const element = document.getElementById(targetId);
+
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= targetValue) {
+                    element.innerText = targetValue;
+                    clearInterval(timer);
+                } else {
+                    element.innerText = Math.floor(current);
+                }
+            }, stepTime);
+        }
+
+        document.getElementById('btnRunDashboard').addEventListener('click', () => {
+            const study = parseFloat(document.getElementById('study_hours').value);
+            const focus = parseInt(document.getElementById('focus_score').value);
+            const assign = parseInt(document.getElementById('assignments').value);
+            const attend = parseFloat(document.getElementById('attendance').value);
+            const phone = parseFloat(document.getElementById('phone_hours').value);
+            const gaming = parseFloat(document.getElementById('gaming').value) || 0;
+            const sleep = parseFloat(document.getElementById('sleep_hours').value);
+            const stress = parseInt(document.getElementById('stress_level').value);
+            const exercise = parseInt(document.getElementById('exercise').value) || 0;
+
+            let normalizedAssign = (assign / 100) * 25; 
+            let score = 33.2 + (study * 4.3) + (focus * 0.28) + (normalizedAssign * 0.4) + (attend * 0.08) 
+                        - (phone * 2.1) - (gaming * 1.6) - (stress * 1.3) + (sleep * 0.7) + (exercise * 0.04);
+            
+            if (score > 99.90) score = 99.90;
+            if (score < 14.94) score = 14.94;
+            score = parseFloat(score.toFixed(2));
+
+            const step1 = document.getElementById('step-input');
+            const step2 = document.getElementById('step-output');
+            
+            step1.classList.add('hidden', 'opacity-0', '-translate-x-6');
+            step2.classList.remove('hidden');
+            
+            // ĐƯA GÓC NHÌN LÊN ĐẦU TRANG MƯỢT MÀ
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+
+            setTimeout(() => {
+                step2.classList.remove('opacity-0', 'translate-x-6');
+                step2.classList.add('opacity-100', 'translate-x-0');
+                animateNumber('finalScoreDisplay', score);
+            }, 40);
+
+            const pill = document.getElementById('statusPill');
+            if(score >= 65) {
+                pill.innerText = "Năng suất cao 🔥";
+                pill.className = "inline-block px-4 py-1.5 rounded-md text-xs font-black uppercase tracking-widest bg-[rgba(128,237,153,0.1)] text-[#80ED99] border-[#80ED99]/30 shadow-[0_0_10px_rgba(128,237,153,0.2)]";
+            } else if(score >= 45) {
+                pill.innerText = "Năng suất ổn định ⚡";
+                pill.className = "inline-block px-4 py-1.5 rounded-md text-xs font-black uppercase tracking-widest bg-slate-800 text-slate-300 border-slate-700";
+            } else {
+                pill.innerText = "Báo động: Hiệu suất thấp ⚠️";
+                pill.className = "inline-block px-4 py-1.5 rounded-md text-xs font-black uppercase tracking-widest bg-[rgba(255,105,97,0.1)] text-[#FF6961] border-[#FF6961]/30 shadow-[0_0_10px_rgba(255,105,97,0.2)]";
+            }
+
+            if(chartInstance) chartInstance.destroy();
+            const ctx = document.getElementById('chartProductivity').getContext('2d');
+            chartInstance = new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Điểm cá nhân', 'Dư lượng'],
+                    datasets: [{
+                        data: [score, 100 - score],
+                        backgroundColor: [
+                            score >= 65 ? '#80ED99' : (score >= 45 ? '#38bdf8' : '#FF6961'),
+                            '#141722'
+                        ],
+                        borderWidth: 0
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    rotation: -90,
+                    circumference: 180,
+                    cutout: '68%',
+                    plugins: { legend: { display: false }, tooltip: { enabled: false } }
+                }
+            });
+
+            let stressText = "Medium";
+            if(stress <= 3) stressText = "Low";
+            if(stress >= 8) stressText = "High";
+
+            let metricHTML = '';
+            metricHTML += makeMetricCard("Quỹ thời gian học", study + " h / ngày", study >= 4.0, study >= 4.0 ? "Đủ thời gian nghiên cứu và đọc tài liệu" : "Thời gian tự học quá ít, khó nhớ bài lâu");
+            metricHTML += makeMetricCard("Chất lượng tập trung", focus + " / 100", focus >= 55, focus >= 55 ? "Tập trung tốt, không bị sao nhãng xung quanh" : "Đang học hay bị ngắt quãng, làm việc riêng");
+            metricHTML += makeMetricCard("Thời lượng giấc ngủ", sleep + " h / đêm", sleep >= 6.5, sleep >= 6.5 ? "Ngủ đủ giấc, cơ thể tràn đầy năng lượng" : "Thiếu ngủ trầm trọng, đầu óc hay uể oải");
+            metricHTML += makeMetricCard("Sử dụng Smartphone", phone + " h / ngày", phone <= 4.5, phone <= 4.5 ? "Dùng điện thoại hợp lý, có chừng mực" : "Xem màn hình quá nhiều, tốn thời gian ảo");
+            metricHTML += makeMetricCard("Mức độ Stress", stressText, stress <= 6, stress <= 6 ? "Tinh thần thoải mái, ít gặp áp lực lớn" : "Đang quá căng thẳng, dễ bị quá tải");
+            metricHTML += makeMetricCard("Tỷ lệ nộp bài tập", assign + " %", assign >= 70, assign >= 70 ? "Hoàn thành bài tập đúng hạn và đầy đủ" : "Nợ bài tập nhiều, việc học bị dồn ứ");
+            document.getElementById('metricAnalysisContainer').innerHTML = metricHTML;
+
+
+            // ================= LOGIC PHÂN TÍCH CHUYÊN SÂU & HÀNH ĐỘNG CHI TIẾT =================
+            let p1 = "", p2 = "", p3 = "";
+            let s1 = "", s2 = "", s3 = "";
+
+            // Ô VUÔNG 1: HỌC TẬP & BÀI TẬP
+            if (study < 4.0 || assign < 70) {
+                p1 += `<div class="space-y-2">
+                            <p><b>Rủi ro tích tụ lỗ hổng:</b> Bạn chỉ dành ${study} giờ tự học và tồn đọng tới ${100 - assign}% khối lượng bài tập. Điều này cho thấy bạn đang rơi vào vòng lặp "trì hoãn thụ động": Sợ bài khó nên không làm, bài dồn lại nhiều quá lại càng sợ và không dám bắt đầu.</p>
+                            <p><b>Tác động tâm lý:</b> Cảm giác nợ bài tập tạo ra một áp lực ngầm vô hình. Mỗi khi bạn đi chơi hay nghỉ ngơi, thâm tâm bạn vẫn thấy bứt rứt, tội lỗi vì chưa làm xong việc, làm suy giảm nghiêm trọng chất lượng cuộc sống.</p>
+                       </div>`;
+                
+                s1 += `<div class="space-y-2">
+                            <p><b>Áp dụng "Quy tắc 5 phút":</b> Đừng cố hoàn thành cả bài tập lớn ngay lập tức. Hãy mở máy lên và cam kết chỉ làm đúng 5 phút (ví dụ: gõ một tiêu đề bài luận, đọc qua 2 câu hỏi). Sau 5 phút, bạn có quyền dừng lại. Bí quyết ở đây là vượt qua lực cản ban đầu để bộ não vào trạng thái làm việc.</p>
+                            <p><b>Phương pháp "Hộp thời gian" (Time-boxing):</b> Khoanh vùng đúng 1 tiếng vào buổi tối (ví dụ: 20h - 21h), tắt hết mọi thứ và chỉ tập trung xử lý các bài tập chuẩn bị đến hạn. Hết giờ thì dừng lại kể cả chưa xong để giữ kỷ luật không nản chí.</p>
+                       </div>`;
+            } else {
+                p1 += `<div class="space-y-2">
+                            <p><b>Vận hành guồng quay xuất sắc:</b> Chúc mừng bạn, việc dành ra ${study} giờ tự học cùng tỷ lệ nộp bài đạt tới ${assign}% chứng tỏ bạn là người có tính tự giác cực kỳ cao và biết sắp xếp thứ tự ưu tiên.</p>
+                            <p><b>Điểm cộng:</b> Bạn luôn chủ động kiểm soát khối lượng kiến thức của mình, không bao giờ phải nếm trải cảm giác thức đêm "học vẹt" hay chạy deadline cuống cuồng trước ngày thi.</p>
+                       </div>`;
+                
+                s1 += `<div class="space-y-2">
+                            <p><b>Học sâu bằng kỹ thuật Feynman:</b> Thay vì chỉ làm bài tập được giao, hãy thử tóm tắt lại kiến thức cốt lõi đó rồi tự giải thích lại cho một người khác (hoặc tự nói trước gương) theo cách đơn giản nhất. Nếu bạn giải thích trôi chảy, bạn đã thực sự làm chủ kiến thức ở mức độ chuyên gia.</p>
+                       </div>`;
+            }
+
+            // Ô VUÔNG 2: TẬP TRUNG & ĐIỆN THOẠI
+            if (focus < 55 || phone > 4.5) {
+                p2 += `<div class="space-y-2">
+                            <p><b>Bẫy phần thưởng ngắn hạn:</b> Quỹ thời gian ${phone} giờ/ngày dành cho điện thoại đang trực tiếp phá hủy khả năng tập trung sâu của bạn. Thói quen lướt xem các video ngắn, tin nhắn đẩy liên tục khiến bộ não luôn ở trạng thái chờ đợi kích thích mới.</p>
+                            <p><b>Tình trạng "Tập trung nửa vời":</b> Điểm số ${focus}/100 nghĩa là bạn đang vừa học vừa nhìn màn hình. Bạn mất trung bình 15-20 phút để quay lại luồng tư duy cũ sau mỗi lần liếc nhìn điện thoại, khiến thời gian ngồi bàn học kéo dài nhưng hiệu quả thực tế bằng không.</p>
+                       </div>`;
+                
+                s2 += `<div class="space-y-2">
+                            <p><b>Chiến thuật "Cách ly vật lý":</b> Khi học, tuyệt đối không để điện thoại trên bàn hay trong túi quần. Hãy cất nó sang phòng khác hoặc bỏ vào sâu trong ba lô. Nguyên tắc: Càng mất nhiều công sức để chạm vào điện thoại, bạn càng ít có xu hướng mở nó ra một cách vô thức.</p>
+                            <p><b>Sử dụng ứng dụng chặn truy cập:</b> Cài đặt các ứng dụng như Forest hoặc chế độ Focus Mode trên máy để khóa toàn bộ mạng xã hội trong các khung giờ học cố định.</p>
+                       </div>`;
+            } else {
+                p2 += `<div class="space-y-2">
+                            <p><b>Bộ não có khả năng miễn dịch tốt:</b> Bạn giữ được điểm tập trung ${focus}/100 và làm chủ thời gian dùng điện thoại ở mức rất an toàn (${phone} giờ). Đây là vũ khí cực mạnh giúp bạn xử lý công việc nhanh gấp đôi người khác.</p>
+                       </div>`;
+                
+                s2 += `<div class="space-y-2">
+                            <p><b>Tối ưu hóa môi trường không gian:</b> Tiếp tục duy trì phong độ này. Hãy thiết kế góc học tập của bạn thật gọn gàng, ánh sáng đầy đủ và chỉ để những tài liệu liên quan đến đúng môn học đó để loại bỏ hoàn toàn 100% tác nhân xao nhãng nghe nhìn.</p>
+                       </div>`;
+            }
+
+            // Ô VUÔNG 3: GIẤC NGỦ & STRESS
+            if (sleep < 6.5 || stress > 6) {
+                p3 += `<div class="space-y-2">
+                            <p><b>Khủng hoảng năng lượng gốc:</b> Việc chỉ ngủ ${sleep} giờ/đêm đang tước đi cơ hội để bộ não dọn dẹp các độc chất tích tụ ban ngày và sắp xếp lại bộ nhớ. Bạn sẽ dễ rơi vào trạng thái "sương mù não" - đầu óc trống rỗng, phản xạ chậm khi tiếp thu thông tin mới.</p>
+                            <p><b>Quá tải áp lực (Stress mức ${stress}):</b> Sự căng thẳng kéo dài khiến tinh thần bạn luôn bật chế độ phòng thủ, dễ gây ra cảm giác cáu gắt, chán nản, mệt mỏi kinh niên dẫn đến việc không còn năng lượng để bám đuổi các mục tiêu dài hạn.</p>
+                       </div>`;
+                
+                s3 += `<div class="space-y-2">
+                            <p><b>Thiết lập "Lệnh giới nghiêm màn hình":</b> Tắt toàn bộ thiết bị điện tử ít nhất 30 phút trước khi ngủ. Ánh sáng xanh từ màn hình đánh lừa bộ não rằng trời vẫn sáng, làm trì hoãn giấc ngủ sâu. Hãy thay bằng việc đọc một vài trang sách giấy.</p>
+                            <p><b>Giải tỏa căng thẳng bằng vận động ngắn:</b> Mỗi khi thấy đầu óc quá tải, hãy áp dụng nguyên tắc xả stress bằng cách đứng dậy đi bộ nhanh, tập vài động tác giãn cơ hoặc chạy bộ nhẹ nhàng trong 15-20 phút. Vận động thể chất giúp cơ thể sản sinh các chất dẫn truyền thần kinh tạo cảm giác sảng khoái tự nhiên.</p>
+                       </div>`;
+            } else {
+                p3 += `<div class="space-y-2">
+                            <p><b>Nền tảng thể chất lý tưởng:</b> Giấc ngủ ổn định ${sleep} giờ chính là chìa khóa vàng giúp cơ thể bạn phục hồi toàn diện. Mức độ áp lực nhẹ nhàng cho thấy bạn đang làm chủ cuộc sống rất tốt, tâm trí bình an giúp nâng cao khả năng sáng tạo.</p>
+                       </div>`;
+                
+                s3 += `<div class="space-y-2">
+                            <p><b>Duy trì nhịp sinh học đều đặn:</b> Hãy cố gắng đi ngủ và thức dậy vào những khung giờ giống nhau kể cả vào ngày cuối tuần. Sự nhất quán này giúp đồng hồ sinh học chạy chuẩn xác, mang lại năng lượng bền bỉ suốt cả ngày dài.</p>
+                       </div>`;
+            }
+
+            // Đẩy toàn bộ nội dung phân tích sâu vào giao diện
+            document.getElementById('p-box-1').innerHTML = p1;
+            document.getElementById('p-box-2').innerHTML = p2;
+            document.getElementById('p-box-3').innerHTML = p3;
+            
+            document.getElementById('s-box-1').innerHTML = s1;
+            document.getElementById('s-box-2').innerHTML = s2;
+            document.getElementById('s-box-3').innerHTML = s3;
+        });
+
+        document.getElementById('btnBack').addEventListener('click', () => {
+            const step1 = document.getElementById('step-input');
+            const step2 = document.getElementById('step-output');
+            
+            step2.classList.add('opacity-0', 'translate-x-6');
+            
+            // ĐƯA GÓC NHÌN LÊN ĐẦU TRANG MƯỢT MÀ KHI QUAY LẠI
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+
+            setTimeout(() => {
+                step2.classList.add('hidden');
+                step1.classList.remove('hidden');
+                setTimeout(() => {
+                    step1.classList.remove('opacity-0', '-translate-x-6');
+                    step1.classList.add('opacity-100', 'translate-x-0');
+                    document.getElementById('finalScoreDisplay').innerText = "0";
+                }, 40);
+            }, 300);
+        });
+
+        function makeMetricCard(title, currentVal, isSafe, textInsight) {
+            const tColor = isSafe ? 'text-[#80ED99]' : 'text-[#FF6961]';
+            const hoverClass = isSafe ? 'neon-card-green' : 'neon-card-red';
+            const tBorder = isSafe ? 'border-[#80ED99]/15 bg-[rgba(128,237,153,0.015)]' : 'border-[#FF6961]/15 bg-[rgba(255,105,97,0.015)]';
+            const neonGlow = isSafe ? 'drop-shadow-[0_0_8px_rgba(128,237,153,0.5)]' : 'drop-shadow-[0_0_8px_rgba(255,105,97,0.5)]';
+            
+            return `
+                <div class="neon-card ${hoverClass} p-4.5 rounded-xl flex items-center justify-between border ${tBorder}">
+                    <div class="space-y-1 pr-3">
+                        <h4 class="font-black text-[11px] text-slate-300 uppercase tracking-wider">${title}</h4>
+                        <p class="text-xs font-normal text-slate-400 leading-snug">${textInsight}</p>
+                    </div>
+                    <div class="text-right shrink-0">
+                        <span class="text-xl font-black ${tColor} ${neonGlow} tracking-tight">${currentVal}</span>
+                    </div>
+                </div>
+            `;
+        }
+         // Tìm hàm xử lý nút bấm phân tích của bạn, ví dụ:
+document.getElementById('btnRunDashboard').addEventListener('click', async () => {
+    
+    // 1. Gom các chỉ số từ thanh trượt (slider) trên giao diện Optime của bạn
+    const payload = {
+        study_hours: parseFloat(document.getElementById('study_hours').value),
+        focus_score: parseInt(document.getElementById('focus_score').value),
+        assignments: parseInt(document.getElementById('assignments').value),
+        attendance: parseFloat(document.getElementById('attendance').value),
+        phone_hours: parseFloat(document.getElementById('phone_hours').value),
+        stress_level: parseInt(document.getElementById('stress_level').value),
+        sleep_hours: parseFloat(document.getElementById('sleep_hours').value)
+    };
+
+    try {
+        // 2. Dùng cùng hostname/port hiện tại, tránh gắn cứng URL
+        const response = await fetch('/api/predict', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+        });
+
+        const result = await response.json();
+        console.log(result);
+        
+        if (result.success) {
+            // 3. AI trả về điểm số dự đoán thành công!
+            
+            const Score = result.predicted_score;
+            // Cập nhật điểm số này lên ô PRODUCTIVITY SCORE trên giao diện của bạn
+            const scoreEl=document.getElementById('txtProductivityScore');
+            if (scoreEl) {
+                scoreEl.innerText = Score;
+            } else {
+                console.warn("Không tìm thấy id txtProductivityScore");
+            }
+            
+            // Tiếp tục gọi hàm vẽ biểu đồ hoặc chạy hiệu ứng UI của bạn...
+        } else {
+            alert("Lỗi AI: " + result.error);
+        }
+    } catch (error) {
+        console.error( error);
+        alert("loi javaScript: " + error.message);
+    }
+});
+    </script>
+   
+</body>
+</html>
