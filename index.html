@@ -703,6 +703,7 @@
             else {
                 p3 = `<p><b>Sức khỏe thể chất duy trì ở mức an toàn:</b> Giấc ngủ và mức độ áp lực của bạn hiện tại đang nằm trong tầm kiểm soát ổn định, đủ điều kiện cung cấp năng lượng cho các hoạt động thường ngày.</p>`;
                 s3 = `<p>• <b>Mẹo tối ưu:</b> Cố định thời gian thức dậy mỗi sáng để giữ nhịp đồng hồ sinh học luôn chuẩn xác, tránh hiện tượng uể oải lệch múi giờ vào cuối tuần.</p>`;
+            }
 
             // Đẩy toàn bộ nội dung phân tích sâu vào giao diện
             document.getElementById('p-box-1').innerHTML = p1;
@@ -713,7 +714,6 @@
             document.getElementById('s-box-2').innerHTML = s2;
             document.getElementById('s-box-3').innerHTML = s3;
         });
-
         document.getElementById('btnBack').addEventListener('click', () => {
             const step1 = document.getElementById('step-input');
             const step2 = document.getElementById('step-output');
