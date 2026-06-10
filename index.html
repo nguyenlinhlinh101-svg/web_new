@@ -489,13 +489,94 @@
             if(stress >= 8) stressText = "High";
 
                         let metricHTML = '';
-            metricHTML += makeMetricCard("Quỹ thời gian học", study + " h / ngày", study >= 4.0, study >= 4.0 ? "Đủ thời gian nghiên cứu và đọc tài liệu" : "Thời gian tự học quá ít, khó nhớ bài lâu");
-            metricHTML += makeMetricCard("Chất lượng tập trung", focus + " / 100", focus >= 55, focus >= 55 ? "Tập trung tốt, không bị sao nhãng xung quanh" : "Đang học hay bị ngắt quãng, làm việc riêng");
-            metricHTML += makeMetricCard("Thời lượng giấc ngủ", sleep + " h / đêm", sleep >= 6.5, sleep >= 6.5 ? "Ngủ đủ giấc, cơ thể tràn đầy năng lượng" : "Thiếu ngủ trầm trọng, đầu óc hay uể oải");
-            metricHTML += makeMetricCard("Sử dụng Smartphone", phone + " h / ngày", phone <= 4.5, phone <= 4.5 ? "Dùng điện thoại hợp lý, có chừng mực" : "Xem màn hình quá nhiều, tốn thời gian ảo");
-            metricHTML += makeMetricCard("Mức độ Stress", stressText, stress <= 6, stress <= 6 ? "Tinh thần thoải mái, ít gặp áp lực lớn" : "Đang quá căng thẳng, dễ bị quá tải");
-            metricHTML += makeMetricCard("Tỷ lệ nộp bài tập", assign + " %", assign >= 70, assign >= 70 ? "Hoàn thành bài tập đúng hạn và đầy đủ" : "Nợ bài tập nhiều, việc học bị dồn ứ");
-            document.getElementById('metricAnalysisContainer').innerHTML = metricHTML;
+            let studyStatus = study >= 4.0;
+            let studyDesc = "";
+            if (study >= 7.0) {
+                studyDesc = "Quỹ thời gian tự học rất lớn, tinh thần đầu tư học tập cao.";
+            } else if (study >= 4.0) {
+                studyDesc = "Duy trì thời gian tự học ở mức ổn định và hợp lý.";
+            } else if (study >= 1.0) {
+                studyDesc = "Thời gian tự học hơi ít, có thể tăng nhẹ để tăng hiệu quả.";
+            } else {
+                studyDesc = "Thời gian tự học quá ít, chưa đủ để xây dựng hệ thống kiến thức.";
+            }
+            metricHTML += makeMetricCard("Quỹ thời gian học", study + " h / ngày", studyStatus, studyDesc);
+
+            let focusStatus = focus >= 55;
+            let focusDesc = "";
+            if (focus >= 70) {
+                focusDesc = "Khả năng tập trung xuất sắc, tối ưu hóa tốt thời gian ngồi học.";
+            } else if (focus >= 55) {
+                focusDesc = "Trạng thái tập trung ở mức ổn định, ít bị xao nhãng.";
+            } else {
+                focusDesc = "Dòng suy nghĩ dễ bị ngắt quãng, cần môi trường yên tĩnh hơn.";
+            }
+            metricHTML += makeMetricCard("Chất lượng tập trung", focus + " / 100", focusStatus, focusDesc);
+
+            let sleepStatus = true;
+            let sleepDesc = "";
+            if (sleep >= 7.0) {
+                sleepStatus = true;
+                sleepDesc = "Tối ưu: Hiệu suất học tập và phục hồi thể chất tốt.";
+            } else if (sleep >= 6.0) {
+                sleepStatus = true;
+                sleepDesc = "Chấp nhận được: Hiệu suất có thể không tối đa nhưng không gặp vấn đề lớn.";
+            } else if (sleep >= 5.0) {
+                sleepStatus = false;
+                sleepDesc = "Cảnh báo: Tích lũy nợ ngủ, bắt đầu làm giảm khả năng học tập.";
+            } else if (sleep >= 4.0) {
+                sleepStatus = false;
+                sleepDesc = "Nguy cơ cao: Suy giảm nhận thức đáng kể, đầu óc uể oải.";
+            } else {
+                sleepStatus = false;
+                sleepDesc = "Nguy cơ rất cao: Không bền vững, ảnh hưởng nghiêm trọng đến sức khỏe và học tập.";
+            }
+            metricHTML += makeMetricCard("Thời lượng giấc ngủ", sleep + " h / đêm", sleepStatus, sleepDesc);
+
+            let phoneStatus = phone <= 5.5; 
+            let phoneDesc = "";
+            if (phone <= 3.5) {
+                phoneDesc = "Kiểm soát thời gian dùng điện thoại rất tốt và chủ động.";
+            } else if (phone <= 5.5) {
+                phoneDesc = "Mức độ sử dụng thiết bị vừa phải, nằm trong ngưỡng cân bằng.";
+            } else if (phone <= 8.0) {
+                phoneDesc = "Thời gian nhìn màn hình khá cao, dễ làm phân mảnh sự tập trung.";
+            } else if (phone <= 10.0) {
+                phoneDesc = "Sử dụng điện thoại ở mức cao, tốn nhiều thời gian cho không gian ảo.";
+            } else {
+                phoneDesc = "Sử dụng điện thoại quá nhiều, đang chiếm dụng toàn bộ quỹ thời gian trong ngày.";
+            }
+            metricHTML += makeMetricCard("Sử dụng Smartphone", phone + " h / ngày", phoneStatus, phoneDesc);
+
+            let stressStatus = stress <= 6;
+            let stressDesc = "";
+            if (stress <= 4) {
+                stressDesc = "Tinh thần thoải mái, tâm lý vững vàng trước áp lực.";
+            } else if (stress <= 6) {
+                stressDesc = "Áp lực ở mức vừa phải, có thể dùng làm động lực thúc đẩy.";
+            } else {
+                stressDesc = "Căng thẳng ở mức cao, cần đan xen các quãng nghỉ ngơi ngắn.";
+            }
+            metricHTML += makeMetricCard("Mức độ Stress", stressText, stressStatus, stressDesc);
+
+            let assignStatus = assign >= 70;
+            let assignDesc = "";
+            if (assign >= 85) {
+                assignDesc = "Hoàn thành bài tập xuất sắc, giữ vững tiến độ chuyên cần.";
+            } else if (assign >= 70) {
+                assignDesc = "Nộp bài đầy đủ và đúng hạn ở các đầu việc cốt lõi.";
+            } else if (assign >= 50) {
+                assignDesc = "Tỷ lệ hoàn thành bài tập trung bình, còn một số bài bị tồn đọng.";
+            } else if (assign >= 30) {
+                assignDesc = "Tỷ lệ nộp bài khá thấp, dễ ảnh hưởng nghiêm trọng đến điểm quá trình.";
+            } else {
+                assignDesc = "Mức cảnh báo: Hầu hết bài tập chưa được hoàn thành, có thể ảnh hưởng trực tiếp tới điểm chuyên cần hoặc giảm khả năng tiếp thu, ghi nhớ kiến thức.";
+            }
+            metricHTML += makeMetricCard("Tỷ lệ nộp bài tập", assign + " %", assignStatus, assignDesc);
+
+            if(document.getElementById('metricAnalysisContainer')) {
+                document.getElementById('metricAnalysisContainer').innerHTML = metricHTML;
+            }
 
 
             // ================= LOGIC PHÂN TÍCH CHUYÊN SÂU & HÀNH ĐỘNG CHI TIẾT =================
