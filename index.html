@@ -642,6 +642,10 @@
                 p2 = `<p><b>Game đóng vai trò thoát khỏi áp lực:</b> Bạn chơi game khá nhiều (${gaming}h) trong giai đoạn stress cao (${stress}/10). Thực tế, game có thể đang là cơ chế phòng vệ tâm lý giúp bạn tạm thời trốn tránh áp lực bài vở thay vì giải trí lành mạnh</p>`;
                 s2 = `<p><b>Đối mặt theo chiến thuật "Eat That Frog":</b> Hãy giải quyết dứt điểm nguồn gốc gây áp lực (đầu việc khó nhất, bài tập sắp đến hạn) ngay vào đầu buổi sáng. Khi gánh nặng tâm lý được tháo gỡ, bạn sẽ thấy mức stress giảm mạnh và có thể chơi game giải trí mà không bị dằn vặt</p>`;
             } 
+            else if (phone >= 7) {
+                p2 = `<p><b>Thời gian dùng điện thoại khá nhiều:</b> Với hơn <b>${phone} giờ</b> dùng điện thoại một ngày, các khoảng thời gian trống trong ngày có thể bị chiếm dụng bởi thiết bị</p>`;
+                s2 = `<p><b>Chiến lược Deep Work (Làm việc sâu):</b> Thiết lập các khung giờ vàng trong ngày (ví dụ 60–120 phút). Trong khung giờ này, cất điện thoại hoàn toàn ở một phòng khác hoặc trong tủ kín, tắt mọi tab không liên quan để bảo vệ bộ não khỏi sự đa nhiệm độc hại</p>`;
+            }
             else if (phone >= 10) {
                 p2 = `<p><b>Màn hình số đang lấp đầy mọi khoảng trống:</b> Với hơn <b>${phone} giờ</b> dùng điện thoại một ngày, các khoảng thời gian trống trong ngày gần như đều bị chiếm dụng bởi thiết bị, làm cạn kiệt năng lượng tư duy sâu</p>`;
                 s2 = `<p><b>Chiến lược Deep Work (Làm việc sâu):</b> Thiết lập các khung giờ vàng trong ngày (ví dụ 60–120 phút). Trong khung giờ này, cất điện thoại hoàn toàn ở một phòng khác hoặc trong tủ kín, tắt mọi tab không liên quan để bảo vệ bộ não khỏi sự đa nhiệm độc hại</p>`;
@@ -650,9 +654,9 @@
                 p2 = `<p><b>Mất tập trung do suy kiệt sinh lý:</b> Thời gian dùng thiết bị của bạn rất ít (${phone}h), đây là thói quen rất tốt. Điểm tập trung thấp lúc này nguyên nhân trực tiếp đến từ thiếu ngủ (${sleep}h) hoặc quá tải nhận thức</p>`;
                 s2 = `<p><b>Chuyển trọng tâm sang Ô vuông số 3:</b> Đừng cố ép não bộ tập trung sâu khi bình năng lượng sinh học đang cạn kiệt. Hãy ưu tiên ngủ đủ trước khi áp dụng các kỹ thuật tăng hiệu suất học tập</p>`;
             } 
-            else if (phone >= 5.5 && youtube >= 3 && focus >= 50 && study >= 5) {
-                p2 = `<p><b>Bẫy "Ảo tưởng năng suất":</b> Bạn học nhiều (${study}h) nhưng thời gian cắm mặt vào màn hình (đặc biệt là Youtube) cũng rất lớn. Bạn dễ có cảm giác mình đang nghiên cứu liên tục, nhưng thực chất phần lớn thời gian là đang tiêu thụ thông tin thụ động từ người khác làm thay</p>`;
-                s2 = `<p><b>Tăng thời gian làm, giảm thời gian xem:</b> Đặt ra quy luật: Cứ 15 phút xem video hướng dẫn thì phải đổi lại bằng 30 phút tự gõ code, giải toán, viết tiểu luận hoặc tự xây dựng hệ thống quản lý dữ liệu thực tế</p>`;
+            else if (phone >= 6.5 && youtube >= 3 || social >= 4 && focus <= 50 && study >= 5) {
+                p2 = `<p><b>"Hiểu lầm năng suất":</b> Bạn học nhiều (${study}h) nhưng thời gian dành cho màn hình (đặc biệt là Youtube/Social) cũng rất lớn, điều này dẫn tới thời gian tự học chưa đạt hiệu quả bởi nhiều tín hiệu gây xao nhãng</p>`;
+                s2 = `<p><b>Chiến lược Deep Work (Làm việc sâu):</b> Thiết lập các khung giờ vàng trong ngày (ví dụ 60–120 phút). Trong khung giờ này, cất điện thoại hoàn toàn ở một phòng khác hoặc trong tủ kín, tắt mọi tab không liên quan để bảo vệ bộ não khỏi sự đa nhiệm độc hại</p>`;
             } 
             else if (phone <= 3.5 && focus >= 65) {
                 p2 = `<p><b>Kiểm soát thiết bị rất xuất sắc:</b> Thời gian dùng điện thoại của bạn ở mức lý tưởng (${phone}h) kết hợp với điểm tập trung cao (${focus}/100) chứng tỏ công nghệ đang phục vụ bạn, chứ bạn không bị công nghệ dẫn dắt</p>`;
@@ -666,7 +670,7 @@
             // Ô VUÔNG 3: THỂ CHẤT & TÂM LÝ
             if (sleep < 6) {
                 if (caffeine >= 300) {
-                    p3 = `<p><b>Sự tỉnh táo đang vay mượn từ caffeine:</b> Bạn ngủ rất thấp (${sleep}h) nhưng lượng caffeine nạp vào lại khá cao (${caffeine}mg). Sự tỉnh táo hiện tại đang được duy trì một cách gượng ép bằng chất kích thích, che giấu sự mệt mỏi tích lũy của não bộ</p>`;
+                    p3 = `<p><b>Sự tỉnh táo đang tới từ caffeine:</b> Bạn ngủ rất ít (${sleep}h) nhưng lượng caffeine nạp vào lại khá cao (${caffeine}mg). Sự tỉnh táo hiện tại đang được duy trì một cách gượng ép bằng chất kích thích, che giấu sự mệt mỏi tích lũy của não bộ</p>`;
                     s3 = `<p><b>Cắt giảm vòng lặp:</b> Cố gắng giảm lượng caffeine nạp vào sau 2 giờ chiều và dịch chuyển thời gian ngủ đêm tăng dần lên mức tối thiểu 6.5 - 7 tiếng để cơ thể tự phục hồi tự nhiên</p>`;
                 } else {
                     p3 = `<p><b>Khả năng phục hồi thấp hơn nhu cầu:</b> Thời gian ngủ chỉ <b>${sleep} giờ/đêm</b> khiến não bộ không có đủ thời gian để dọn dẹp độc tố và củng cố trí nhớ, trực tiếp bóp nghẹt điểm tập trung của bạn vào ban ngày</p>`;
