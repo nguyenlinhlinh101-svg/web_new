@@ -588,124 +588,121 @@
 
             // Ô VUÔNG 1: HỌC TẬP & BÀI TẬP
             if (study < 1 && assign < 50 && attend < 65) {
-                p1 = `<p><b>Cần kích hoạt lại bộ khung học tập:</b> Bạn cần đầu tư nhiều thời gian hơn cho việc học, với chỉ <b>${study} giờ</b> tự học hiện tại thì điểm số dự đoán (${gpa}) chưa phải là mục tiêu bạn cần giải quyết nhất. Vấn đề cốt lõi lúc này là bắt tay vào xây dựng một hệ thống học tập cơ bản.</p>`;
-                s1 = `<p>• <b>Tập trung cốt lõi:</b> Ưu tiên tăng thời lượng học hiệu quả lên từ từ (tuyệt đối không ngồi vào bàn học cùng chiếc điện thoại hay tiếp tục lướt các mạng xã hội) để tâm trí làm quen dần với hệ thống học tập mới.</p>
-                    <p>• <b>Phương pháp Pomodoro chiến thuật:</b> Khi rất khó bắt đầu học, hãy đặt chu kỳ 25 phút tập trung hoàn toàn và 5 phút nghỉ. Phương pháp này cực kỳ phù hợp để vượt qua sự trì hoãn ban đầu, giúp bạn tích lũy thời gian học mà không bị ngợp.</p>`;
+                p1 = `<p><b>Cần kích hoạt lại bộ khung học tập:</b> Bạn cần đầu tư nhiều thời gian hơn cho việc học, với chỉ <b>${study} giờ</b> tự học hiện tại thì việc tăng điểm số ngay lập tức chưa phải là mục tiêu bạn cần giải quyết nhất. Vấn đề cốt lõi lúc này là bắt tay vào xây dựng một hệ thống học tập cơ bản</p>`;
+                s1 = `<p><b>Tập trung cốt lõi:</b> Ưu tiên tăng thời lượng học hiệu quả lên từ từ (không ngồi vào bàn học cùng chiếc điện thoại hay tiếp tục lướt các mạng xã hội) để tâm trí làm quen dần với hệ thống học tập mới</p>
+                    <p><b>Phương pháp Pomodoro:</b> Khi rất khó bắt đầu học, hãy đặt chu kỳ 25 phút tập trung hoàn toàn và 5 phút nghỉ. Phương pháp này cực kỳ phù hợp để vượt qua sự trì hoãn ban đầu, giúp bạn tích lũy thời gian học mà không bị ngợp</p>`;
             } 
             else if (attend >= 75 && study < 1 && gpa < 6.5) {
-                p1 = `<p><b>Chăm chỉ trên lớp nhưng thiếu tự học:</b> Bạn lên lớp rất đầy đủ (${attend}%), tuy nhiên việc thiếu thời gian tự học (chỉ <b>${study} giờ</b>) khiến kiến thức chưa được tiếp thu và ghi nhớ sâu, dẫn tới điểm dự đoán (${gpa}) chưa được như kỳ vọng.</p>`;
-                s1 = `<p>• <b>Tạo thói quen tự học chủ động:</b> Việc nghe giảng trên lớp tuy rất quan trọng, nhưng việc tự học, ôn tập lại bài còn đóng vai trò quan trọng hơn trong việc nâng cao điểm số, thật sự biến kiến thức của thầy cô thành của bản thân.</p>
-                    <p>• <b>Phương pháp Blurting (Nếu có thời gian nghỉ):</b> Ngay sau khi đi học về, hãy lấy một tờ giấy trắng viết nhanh tất cả những gì bạn nhớ trong đầu, sau đó đối chiếu lại với tài liệu gốc để phát hiện lỗ hổng kiến thức.</p>
-                    <p>• <b>Giải pháp tối ưu cho người bận rộn/đi làm thêm:</b> Nếu lịch trình của bạn quá dày và không thể áp dụng Blurting ngay, hãy tận dụng các khoảng thời gian trống ngắn (khi đi xe bus, giờ nghỉ lao tại chỗ làm) để lướt nhanh lại các mục lục hoặc sơ đồ tư duy của bài học trên điện thoại. Việc xem lại ngắn gọn này giúp giữ luồng ghi nhớ mà không tốn quá nhiều quỹ thời gian trong ngày.</p>`;
+                p1 = `<p><b>Chăm chỉ trên lớp nhưng thiếu tự học:</b> Bạn lên lớp rất đầy đủ (${attend}%), tuy nhiên việc thiếu thời gian tự học (chỉ <b>${study} giờ</b>) khiến kiến thức chưa được tiếp thu và ghi nhớ sâu, dẫn tới điểm số (${gpa}) chưa được như kỳ vọng</p>`;
+                s1 = `<p><b>Tạo thói quen tự học chủ động:</b> Việc nghe giảng trên lớp tuy rất quan trọng, nhưng việc tự học, ôn tập lại bài còn đóng vai trò quan trọng hơn trong việc nâng cao điểm số, thật sự biến kiến thức của thầy cô thành của bản thân</p>
+                    <p><b>Phương pháp Blurting (Nếu có thời gian nghỉ ngay trong ngày):</b> Ngay sau khi đi học về, hãy lấy một tờ giấy trắng viết nhanh tất cả những gì bạn nhớ trong đầu, sau đó đối chiếu lại với vở ghi hoặc tài liệu để phát hiện phần kiến thức chưa chính xác</p>
+                    <p><b>Với người bận rộn/đi làm thêm:</b> Nếu lịch trình của bạn quá dày và không thể áp dụng Blurting ngay, hãy tận dụng các khoảng thời gian trống ngắn (khi đi xe bus, giờ nghỉ lao tại chỗ làm) để lướt nhanh lại các mục lục hoặc slide bài giảng của bài học trên điện thoại. Việc xem lại ngắn gọn này giúp giữ luồng ghi nhớ mà không tốn quá nhiều thời gian</p>`;
             } 
             else if (study >= 4 && assign < 50) {
-                p1 = `<p><b>Chăm chỉ tự học nhưng mức độ hoàn thành bài chưa cao:</b> Bạn đang dành đến <b>${study} giờ</b> để tự học, đây là một điểm tựa rất tốt. Tuy nhiên, tỷ lệ hoàn thành bài tập lại chưa cao (${assign}%). Việc chưa hoàn thành bài tập có thể dẫn tới mất điểm chuyên cần, do đó ảnh hưởng trực tiếp tới điểm dự đoán; hoặc đơn giản hơn, việc chưa hoàn thành bài tập khiến kiến thức khó được tiếp thu, ghi nhớ sâu sắc thông qua thực hành.</p>`;
-                s1 = `<p>• <b>Chuyển đổi thước đo mục tiêu:</b> Chuyển từ việc đếm "số giờ tự học" sang đếm "số lượng bài tập hoàn thành". Bạn cần ưu tiên hoàn thành bài tập trước khi tự học mở rộng kiến thức.</p>
-                    <p>• <b>Phương pháp "Eat That Frog" kết hợp Quy tắc 5 phút:</b> Bài tập ở độ khó cao thường tạo ra tâm lý ngại làm, trì hoãn. Hãy xử lý bài tập khó nhất vào đầu buổi học, và mỗi khi gặp bài khó, hãy tự nhủ <i>"mình chỉ làm đúng 5 phút thôi"</i>. Thường khi đã vượt qua được 5 phút đầu, não bộ sẽ tự động cuốn vào luồng tập trung làm việc và học tập.</p>`;
+                p1 = `<p><b>Chăm chỉ tự học nhưng mức độ hoàn thành bài chưa cao:</b> Bạn đang dành đến <b>${study} giờ</b> để tự học, đây là một điểm tựa rất tốt. Tuy nhiên, tỷ lệ hoàn thành bài tập lại chưa cao (${assign}%). Việc chưa hoàn thành bài tập có thể dẫn tới mất điểm chuyên cần, do đó ảnh hưởng trực tiếp tới điểm số; hoặc đơn giản hơn, việc chưa hoàn thành bài tập khiến kiến thức khó được tiếp thu, ghi nhớ sâu sắc thông qua thực hành</p>`;
+                s1 = `<p><b>Chuyển đổi thước đo mục tiêu:</b> Chuyển từ việc đếm "số giờ tự học" sang đếm "số lượng bài tập hoàn thành". Bạn cần ưu tiên hoàn thành bài tập trước khi tự học mở rộng kiến thức</p>
+                    <p><b>Phương pháp "Eat That Frog" kết hợp Quy tắc 5 phút:</b> Bài tập ở độ khó cao thường tạo ra tâm lý ngại làm, trì hoãn. Hãy xử lý bài tập khó nhất vào đầu buổi học, và mỗi khi gặp bài khó, hãy tự nhủ <i>"mình chỉ làm đúng 5 phút thôi"</i>. Thường khi đã vượt qua được 5 phút đầu, não bộ sẽ tự động cuốn vào luồng tập trung làm việc và học tập</p>`;
             } 
             else if (study >= 4 && assign >= 75 && gpa < 6.5) {
-                p1 = `<p><b>Đầu tư nhiều thời gian cho học tập nhưng chưa tối ưu chiến thuật học tập:</b> Thời gian tự học và tỷ lệ hoàn thành bài tập của bạn ở mức cao, tuy nhiên, điểm dự đoán (${gpa}) chưa tương xứng có thể có nghĩa rằng việc đầu tư thời gian chưa đem lại hiệu quả. Có thể bạn đã học thuộc lòng, ghi chép thụ động hoặc dành nhiều thời gian ôn các nội dung ít xuất hiện trong bài thi. Ngoài ra, thời gian bạn dành ra cho học tập có thể không được tối ưu khi có nhiều nguồn xao nhãng trong quá trình học, khiến thời gian học không chất lượng.</p>`;
-                s1 = `<p>• <b>Áp dụng Nguyên lý Pareto (80/20):</b> Trong mọi môn học, 20% lượng kiến thức cốt lõi sẽ quyết định 80% số câu điểm trong bài thi. Đừng có học dàn trải mọi ngóc ngách của môn học.</p>
-                    <p>• <b>Chiến thuật Retrieval Practice:</b> Thay vì đọc đi đọc lại lý thuyết, hãy chủ động làm bài thi thử, làm quiz, hoặc lật lại các đề thi cũ để kiểm tra ngay khả năng vận dụng.</p>`;
+                p1 = `<p><b>Đầu tư nhiều thời gian cho học tập nhưng chưa tối ưu chiến thuật học tập:</b> Thời gian tự học và tỷ lệ hoàn thành bài tập của bạn ở mức cao, tuy nhiên, điểm số (${gpa}) chưa tương xứng có thể có nghĩa rằng việc đầu tư thời gian chưa đem lại hiệu quả. Có thể bạn đã học thuộc lòng, ghi chép thụ động hoặc dành nhiều thời gian ôn các nội dung ít xuất hiện trong bài thi. Ngoài ra, thời gian bạn dành ra cho học tập có thể không được tối ưu khi có nhiều nguồn xao nhãng trong quá trình học, khiến thời gian học không chất lượng</p>`;
+                s1 = `<p><b>Áp dụng Nguyên lý Pareto (80/20):</b> Trong mọi môn học, 20% lượng kiến thức cốt lõi sẽ quyết định 80% số câu điểm trong bài thi. Đừng học dàn trải mọi ngóc ngách của môn học, bạn nên xác định nội dung trọng tâm cốt lõi và tập trung ôn tập các mục này</p>
+                    <p><b>Chiến thuật Retrieval Practice:</b> Thay vì đọc đi đọc lại lý thuyết, hãy chủ động làm bài thi thử, làm quiz, hoặc lật lại các đề thi cũ để kiểm tra ngay khả năng vận dụng</p>`;
             } 
-            else if (attend < 40 && gpa < 5.0 && study >= 3) {
-                p1 = `<p><b>Hệ thống kiến thức trên lớp bị đứt gãy nghiêm trọng:</b> Việc bỏ lỡ quá nhiều buổi học trên lớp (${attend}% đi học) đang kéo giảm điểm của bạn. Việc bỏ lỡ kiến thức trên lớp có thể khiến việc tự học lại kiến thức sau đó kém hiệu quả và khó khăn hơn nhiều. Nếu bạn bỏ lỡ các buổi đầu, việc tới lớp các buổi sau có thể gây cảm giác chán nản vì phải đuổi kịp tốc độ học của bài giảng mà bạn bỏ lỡ.</p>`;
-                s1 = `<p>• <b>Học bù theo chương:</b> Hãy mượn nguồn tài liệu chính xác từ bạn bè hoặc bài giảng của giảng viên để học bù lại kiến thức từng chương.</p>
-                    <p>• <b>Chiến lược "Chữa cháy sát ngày thi" bằng Eat That Frog:</b> Với quỹ thời gian ít ỏi còn lại, việc học dàn trải hay lặp lại ngắt quãng dài hạn sẽ không khả thi. Bạn cần cố gắng tóm tắt cô đọng phần kiến thức nào là quan trọng nhất và tập trung học cho bằng được phần đó. Hãy biến phần kiến thức cốt lõi/trọng tâm này thành con "ếch" lớn nhất phải giải quyết triệt để trước khi thi.</p>`;
+            else if (attend < 40 && gpa < 5.0) {
+                p1 = `<p><b>Thời gian đi học làm ảnh hưởng tới điểm số:</b> Việc bỏ lỡ quá nhiều buổi học trên lớp (${attend}% đi học) đang kéo giảm điểm của bạn. Bỏ lỡ kiến thức trên lớp có thể khiến việc tự học lại kiến thức sau đó kém hiệu quả và khó khăn hơn nhiều. Nếu bạn bỏ lỡ các buổi đầu, việc tới lớp các buổi sau có thể gây cảm giác chán nản vì phải đuổi kịp tốc độ học của bài giảng mà bạn bỏ lỡ</p>`;
+                s1 = `<p><b>Học bù theo chương:</b> Hãy mượn nguồn tài liệu chính xác từ bạn bè hoặc bài giảng của giảng viên để học bù lại kiến thức từng chương</p>
+                    <p><b>Chiến lược "Chữa cháy sát ngày thi" bằng Eat That Frog:</b> Với quỹ thời gian ít ỏi còn lại, việc học dàn trải hay lặp lại ngắt quãng dài hạn sẽ không khả thi. Bạn cần cố gắng tóm tắt cô đọng phần kiến thức nào là quan trọng nhất và tập trung học cho bằng được phần đó. Hãy biến phần kiến thức cốt lõi/trọng tâm này thành con "ếch" lớn nhất phải giải quyết triệt để trước khi thi</p>`;
             } 
             else if (study >= 4 && attend >= 80 && gpa >= 6.5 && gpa < 8.0) {
-                p1 = `<p><b>Khối lượng nỗ lực lớn nhưng hiệu quả đầu ra chưa tương xứng:</b> Bạn rất có kỷ luật (${study}h tự học, ${attend}% đi học). Kết quả hiện tại ở mức khá ổn, nhưng bạn hoàn toàn có thể bứt phá nếu thay đổi cách bộ não xử lý thông tin.</p>`;
-                s1 = `<p>• <b>Nâng cấp lên Active Recall (Hồi tưởng chủ động):</b> Ngừng việc đọc lại ghi chú một cách thụ động hay highlight sách. Hãy đóng sách lại, tự đặt câu hỏi cốt lõi và ép não phải nhớ lại, hoặc tự thiết kế Flashcard để tự ôn luyện hằng ngày.</p>
-                    <p>• <b>Kỹ thuật Feynman:</b> Hãy thử tự giải thích một khái niệm phức tạp của môn học cho một học sinh cấp 2 hiểu bằng ngôn từ đơn giản nhất. Chỗ nào bạn bị khựng hoặc giải thích lúng túng, đó chính là nơi bạn chưa thực sự hiểu sâu.</p>`;
+                p1 = `<p><b>Đầu tư nhiều thời gian và nỗ lực nhưng hiệu quả chưa tương ứng:</b> Bạn rất có kỷ luật (${study}h tự học, ${attend}% đi học). Kết quả hiện tại ở mức khá ổn, nhưng bạn hoàn toàn có thể bứt phá bằng cách áp dụng các phương pháp hiệu quả</p>`;
+                s1 = `<p><b>Nâng cấp lên Active Recall (Hồi tưởng chủ động):</b> Ngừng việc đọc lại ghi chú một cách thụ động hay highlight sách. Hãy đóng sách lại, tự đặt câu hỏi cốt lõi và ghi nhớ lại, hoặc tự thiết kế Flashcard để ôn luyện hằng ngày (có thể là Flashcard giấy hoặc phần mềm tạo Flashcard như Anki)</p>
+                    <p><b>Kỹ thuật Feynman:</b> Hãy thử tự giải thích một khái niệm phức tạp của môn học cho một người chưa biết gì về kiến thức đó bằng ngôn từ đơn giản nhất. Chỗ nào bạn bị khựng hoặc giải thích lúng túng, đó chính là nơi bạn chưa thực sự hiểu sâu</p>`;
             } 
-            else if (assign < 60 && gpa >= 8.0) {
-                p1 = `<p><b>Dựa vào khả năng xử lý ngắn hạn:</b> Bạn có tư duy rất nhạy bén nên điểm số dự đoán vẫn cao (${gpa}). Tuy nhiên, việc lơ là bài tập (${assign}%) cho thấy bạn đang học dồn dập vào phút chót thay vì duy trì một hệ thống ổn định lâu dài.</p>`;
-                s1 = `<p>• <b>Quản lý theo Phương pháp ABC:</b> Xếp hạng các đầu việc bài tập của bạn: A (cực kỳ quan trọng, sát hạn), B (quan trọng), C (không làm ngay cũng không sao). Luôn giải quyết dứt điểm việc nhóm A từ sớm để loại bỏ rủi ro quá tải tinh thần sát ngày nộp.</p>`;
+            else if (assign < 50 && gpa >= 8.0 && study <= 1) {
+                p1 = `<p><b>Dựa vào khả năng tư duy ngắn hạn:</b> Bạn có tư duy rất nhạy bén nên điểm số dự đoán vẫn cao (${gpa}). Tuy nhiên, việc dành ít thời gian tự học (${study}h) và lơ là bài tập (${assign}%) cho thấy bạn đang học dồn dập vào phút chót thay vì duy trì một hệ thống ổn định lâu dài</p>`;
+                s1 = `<p><b>Quản lý theo Phương pháp ABC:</b> Xếp hạng các đầu việc bài tập của bạn: A (cực kỳ quan trọng, sát hạn), B (quan trọng), C (không làm ngay cũng không sao). Luôn giải quyết dứt điểm việc nhóm A từ sớm để loại bỏ rủi ro quá tải tinh thần sát ngày nộp</p>
+                    <p><b>Phương pháp Pomodoro:</b> Khi rất khó bắt đầu học, hãy đặt chu kỳ 25 phút tập trung hoàn toàn và 5 phút nghỉ. Phương pháp này cực kỳ phù hợp để vượt qua sự trì hoãn ban đầu, giúp bạn tích lũy thời gian học mà không bị ngợp</p>`;
             } 
             else {
-                p1 = `<p><b>Hệ thống học tập đang vận hành rất tốt:</b> Bạn đang duy trì một trạng thái cân bằng tuyệt vời giữa tự học (${study}h), hoàn thành bài tập (${assign}%) và kỷ luật lên lớp. Điểm số dự đoán phản ánh chính xác sự đầu tư nghiêm túc này.</p>`;
-                s1 = `<p>• <b>Duy trì bằng Time Blocking:</b> Hãy tiếp tục đóng khung lịch trình học tập cố định trong tuần để duy trì phong độ ổn định mà vẫn có nhiều thời gian dành cho các hoạt động giải trí cá nhân.</p>`;
+                p1 = `<p><b>Hệ thống học tập đang vận hành rất tốt:</b> Bạn đang duy trì một trạng thái cân bằng tuyệt vời giữa tự học (${study}h), hoàn thành bài tập (${assign}%) và kỷ luật lên lớp. Điểm số dự đoán phản ánh chính xác sự đầu tư nghiêm túc này</p>`;
+                s1 = `<p><b>Duy trì bằng Time Blocking:</b> Hãy tiếp tục đóng khung lịch trình học tập cố định trong tuần để duy trì phong độ ổn định mà vẫn có nhiều thời gian dành cho các hoạt động giải trí cá nhân</p>`;
             }
 
             // Ô VUÔNG 2: TẬP TRUNG & ĐIỆN THOẠI
             if (social >= 4 && focus < 50) {
-                p2 = `<p><b>Khả năng chú ý đang bị phân mảnh:</b> Thời gian lướt mạng xã hội lớn (${social}h) và điểm tập trung thấp (${focus}/100) cho thấy não bộ đang liên tục quen nhận những kích thích dopamine ngắn, khiến bạn nhanh nản khi phải đọc tài liệu dài.</p>`;
-                s2 = `<p>• <b>Áp dụng Kỹ thuật Interleaving (Học xen kẽ):</b> Thay vì ép mình ngồi học liên tục một chủ đề dễ gây chán và thèm điện thoại, hãy chia nhỏ ca học thành 45 phút môn này, nghỉ ngắn, rồi chuyển sang 45 phút môn khác. Sự liên tục chuyển đổi mục tiêu lành mạnh giúp não giữ được độ nhạy bén mà không cần tìm đến mạng xã hội.</p>
-                    <p>• <b>Tắt thông báo chủ động:</b> Đặt điện thoại ở chế độ không làm phiền trong suốt ca học.</p>`;
+                p2 = `<p><b>Khả năng chú ý đang bị ngắt quãng:</b> Thời gian lướt mạng xã hội lớn (${social}h) và điểm tập trung thấp (${focus}/100) cho thấy não bộ đang liên tục quen nhận những kích thích dopamine ngắn, khiến bạn nhanh nản khi phải đọc tài liệu dài</p>`;
+                s2 = `<p><b>Áp dụng Kỹ thuật Interleaving (Học xen kẽ):</b> Thay vì ép mình ngồi học liên tục một chủ đề dễ gây chán và thèm điện thoại, hãy chia nhỏ ca học thành 45 phút môn này, nghỉ ngắn, rồi chuyển sang 45 phút môn khác hoặc 30 phút mỗi ca nếu bạn chưa quen. Sự liên tục chuyển đổi mục tiêu lành mạnh giúp não giữ được độ nhạy bén mà không cần tìm đến mạng xã hội</p>
+                    <p><b>Tắt thông báo chủ động:</b> Đặt điện thoại ở chế độ không làm phiền trong suốt giờ học</p>`;
             } 
             else if (youtube >= 4 && focus < 55) {
-                p2 = `<p><b>Thời gian tiêu thụ nội dung vượt xa thực hành:</b> Việc dành đến <b>${youtube} giờ</b> cho YouTube dễ tạo cảm giác thoải mái tinh thần nhưng thực tế khả năng ghi nhớ sâu lại rất thấp vì bạn đang tiếp nhận thông tin một chiều.</p>`;
-                s2 = `<p>• <b>Đặt giới hạn và Chuyển đổi trạng thái:</b> Chỉ xem video có mục đích cụ thể và khống chế thời gian xem.</p>
-                    <p>• <b>Áp dụng Retrieval Practice ngay khi xem:</b> Cứ sau 15-20 phút xem video bài giảng, hãy tạm dừng lại, tự trả lời một câu hỏi liên quan hoặc ghi nhanh tóm tắt ra giấy thay vì chỉ để video chạy liên tục tự động.</p>`;
+                p2 = `<p><b>Thời gian tiêu thụ nội dung vượt xa thực hành:</b> Việc dành đến <b>${youtube} giờ</b> cho YouTube dễ tạo cảm giác thoải mái tinh thần nhưng thực tế khả năng ghi nhớ sâu lại rất thấp vì bạn đang tiếp nhận thông tin một chiều</p>`;
+                s2 = `<p><b>Đặt giới hạn và Chuyển đổi trạng thái:</b> Chỉ xem video có mục đích cụ thể và khống chế thời gian xem</p>`;
             } 
             else if (gaming >= 3 && stress >= 7) {
-                p2 = `<p><b>Game đóng vai trò thoát khỏi áp lực:</b> Bạn chơi game khá nhiều (${gaming}h) trong giai đoạn stress cao (${stress}/10). Thực tế, game có thể đang là cơ chế phòng vệ tâm lý giúp bạn tạm thời trốn tránh áp lực bài vở thay vì giải trí lành mạnh.</p>`;
-                s2 = `<p>• <b>Đối mặt theo chiến thuật "Eat That Frog":</b> Hãy giải quyết dứt điểm nguồn gốc gây áp lực (đầu việc khó nhất, bài tập sắp đến hạn) ngay vào đầu buổi sáng. Khi gánh nặng tâm lý được tháo gỡ, bạn sẽ thấy mức stress giảm mạnh và có thể chơi game giải trí mà không bị dằn vặt.</p>`;
+                p2 = `<p><b>Game đóng vai trò thoát khỏi áp lực:</b> Bạn chơi game khá nhiều (${gaming}h) trong giai đoạn stress cao (${stress}/10). Thực tế, game có thể đang là cơ chế phòng vệ tâm lý giúp bạn tạm thời trốn tránh áp lực bài vở thay vì giải trí lành mạnh</p>`;
+                s2 = `<p><b>Đối mặt theo chiến thuật "Eat That Frog":</b> Hãy giải quyết dứt điểm nguồn gốc gây áp lực (đầu việc khó nhất, bài tập sắp đến hạn) ngay vào đầu buổi sáng. Khi gánh nặng tâm lý được tháo gỡ, bạn sẽ thấy mức stress giảm mạnh và có thể chơi game giải trí mà không bị dằn vặt</p>`;
             } 
             else if (phone >= 10) {
-                p2 = `<p><b>Màn hình số đang lấp đầy mọi khoảng trống:</b> Với hơn <b>${phone} giờ</b> dùng điện thoại một ngày, các khoảng thời gian trống trong ngày gần như đều bị chiếm dụng bởi thiết bị, làm cạn kiệt năng lượng tư duy sâu.</p>`;
-                s2 = `<p>• <b>Chiến lược Deep Work (Làm việc sâu):</b> Thiết lập các khung giờ vàng trong ngày (ví dụ 60–120 phút). Trong khung giờ này, cất điện thoại hoàn toàn ở một phòng khác hoặc trong tủ kín, tắt mọi tab không liên quan để bảo vệ bộ não khỏi sự đa nhiệm độc hại.</p>`;
+                p2 = `<p><b>Màn hình số đang lấp đầy mọi khoảng trống:</b> Với hơn <b>${phone} giờ</b> dùng điện thoại một ngày, các khoảng thời gian trống trong ngày gần như đều bị chiếm dụng bởi thiết bị, làm cạn kiệt năng lượng tư duy sâu</p>`;
+                s2 = `<p><b>Chiến lược Deep Work (Làm việc sâu):</b> Thiết lập các khung giờ vàng trong ngày (ví dụ 60–120 phút). Trong khung giờ này, cất điện thoại hoàn toàn ở một phòng khác hoặc trong tủ kín, tắt mọi tab không liên quan để bảo vệ bộ não khỏi sự đa nhiệm độc hại</p>`;
             } 
             else if (focus < 50 && phone <= 3.5 && sleep < 6) {
-                p2 = `<p><b>Mất tập trung do suy kiệt sinh lý:</b> Thời gian dùng thiết bị của bạn rất ít (${phone}h), đây là thói quen rất tốt. Điểm tập trung thấp lúc này nguyên nhân trực tiếp đến từ thiếu ngủ (${sleep}h) hoặc quá tải nhận thức.</p>`;
-                s2 = `<p>• <b>Chuyển trọng tâm sang Ô vuông số 3:</b> Đừng cố ép não bộ tập trung sâu khi bình năng lượng sinh học đang cạn kiệt. Hãy ưu tiên ngủ đủ trước khi áp dụng các kỹ thuật tăng hiệu suất học tập.</p>`;
+                p2 = `<p><b>Mất tập trung do suy kiệt sinh lý:</b> Thời gian dùng thiết bị của bạn rất ít (${phone}h), đây là thói quen rất tốt. Điểm tập trung thấp lúc này nguyên nhân trực tiếp đến từ thiếu ngủ (${sleep}h) hoặc quá tải nhận thức</p>`;
+                s2 = `<p><b>Chuyển trọng tâm sang Ô vuông số 3:</b> Đừng cố ép não bộ tập trung sâu khi bình năng lượng sinh học đang cạn kiệt. Hãy ưu tiên ngủ đủ trước khi áp dụng các kỹ thuật tăng hiệu suất học tập</p>`;
             } 
             else if (phone >= 5.5 && youtube >= 3 && focus >= 50 && study >= 5) {
-                p2 = `<p><b>Bẫy "Ảo tưởng năng suất":</b> Bạn học nhiều (${study}h) nhưng thời gian cắm mặt vào màn hình (đặc biệt là Youtube) cũng rất lớn. Bạn dễ có cảm giác mình đang nghiên cứu liên tục, nhưng thực chất phần lớn thời gian là đang tiêu thụ thông tin thụ động từ người khác làm thay.</p>`;
-                s2 = `<p>• <b>Tăng thời gian làm, giảm thời gian xem:</b> Đặt ra quy luật: Cứ 15 phút xem video hướng dẫn thì phải đổi lại bằng 30 phút tự gõ code, giải toán, viết tiểu luận hoặc tự xây dựng hệ thống quản lý dữ liệu thực tế.</p>`;
+                p2 = `<p><b>Bẫy "Ảo tưởng năng suất":</b> Bạn học nhiều (${study}h) nhưng thời gian cắm mặt vào màn hình (đặc biệt là Youtube) cũng rất lớn. Bạn dễ có cảm giác mình đang nghiên cứu liên tục, nhưng thực chất phần lớn thời gian là đang tiêu thụ thông tin thụ động từ người khác làm thay</p>`;
+                s2 = `<p><b>Tăng thời gian làm, giảm thời gian xem:</b> Đặt ra quy luật: Cứ 15 phút xem video hướng dẫn thì phải đổi lại bằng 30 phút tự gõ code, giải toán, viết tiểu luận hoặc tự xây dựng hệ thống quản lý dữ liệu thực tế</p>`;
             } 
             else if (phone <= 3.5 && focus >= 65) {
-                p2 = `<p><b>Kiểm soát thiết bị rất xuất sắc:</b> Thời gian dùng điện thoại của bạn ở mức lý tưởng (${phone}h) kết hợp với điểm tập trung cao (${focus}/100) chứng tỏ công nghệ đang phục vụ bạn, chứ bạn không bị công nghệ dẫn dắt.</p>`;
-                s2 = `<p>• <b>Phát huy năng lực bằng Deep Work:</b> Bạn đã có nền tảng tập trung rất tốt, hãy tận dụng các khối thời gian này để nghiên cứu các đề tài khó hoặc học sâu các chứng chỉ chuyên môn cao.</p>`;
+                p2 = `<p><b>Kiểm soát thiết bị rất xuất sắc:</b> Thời gian dùng điện thoại của bạn ở mức lý tưởng (${phone}h) kết hợp với điểm tập trung cao (${focus}/100) chứng tỏ công nghệ đang phục vụ bạn, chứ bạn không bị công nghệ dẫn dắt</p>`;
+                s2 = `<p><b>Phát huy năng lực bằng Deep Work:</b> Bạn đã có nền tảng tập trung rất tốt, hãy tận dụng các khối thời gian này để nghiên cứu các đề tài khó hoặc học sâu các chứng chỉ chuyên môn cao</p>`;
             } 
             else {
-                p2 = `<p><b>Quản lý thiết bị ở mức cân bằng:</b> Quỹ thời gian dùng điện thoại một ngày của bạn (<b>${phone} giờ</b>) nằm trong ngưỡng vừa phải và hoàn toàn hợp lý đối với sinh viên hiện đại. Thiết bị chưa gây ảnh hưởng đáng kể tới năng suất thực tế của bạn.</p>`;
-                s2 = `<p>• <b>Duy trì sự ổn định bằng Time Blocking:</b> Hãy giữ vững phong độ này bằng cách lên lịch rõ ràng khung giờ dùng máy để giải trí (ví dụ sau 8h tối) để không làm gián đoạn dòng tập trung ban ngày.</p>`;
+                p2 = `<p><b>Quản lý thiết bị ở mức cân bằng:</b> Quỹ thời gian dùng điện thoại một ngày của bạn (<b>${phone} giờ</b>) nằm trong ngưỡng vừa phải và hoàn toàn hợp lý đối với sinh viên hiện đại. Thiết bị chưa gây ảnh hưởng đáng kể tới năng suất thực tế của bạn</p>`;
+                s2 = `<p><b>Duy trì sự ổn định bằng Time Blocking:</b> Hãy giữ vững phong độ này bằng cách lên lịch rõ ràng khung giờ dùng máy để giải trí (ví dụ sau 8h tối) để không làm gián đoạn dòng tập trung ban ngày</p>`;
             }
 
-            // -------------------------------------------------------------------------
             // Ô VUÔNG 3: THỂ CHẤT & TÂM LÝ
-            // -------------------------------------------------------------------------
             if (sleep < 6) {
                 if (caffeine >= 300) {
-                    p3 = `<p><b>Sự tỉnh táo đang vay mượn từ caffeine:</b> Bạn ngủ rất thấp (${sleep}h) nhưng lượng caffeine nạp vào lại khá cao (${caffeine}mg). Sự tỉnh táo hiện tại đang được duy trì một cách gượng ép bằng chất kích thích, che giấu sự mệt mỏi tích lũy của não bộ.</p>`;
-                    s3 = `<p>• <b>Cắt giảm vòng lặp:</b> Cố gắng giảm lượng caffeine nạp vào sau 2 giờ chiều và dịch chuyển thời gian ngủ đêm tăng dần lên mức tối thiểu 6.5 - 7 tiếng để cơ thể tự phục hồi tự nhiên.</p>`;
+                    p3 = `<p><b>Sự tỉnh táo đang vay mượn từ caffeine:</b> Bạn ngủ rất thấp (${sleep}h) nhưng lượng caffeine nạp vào lại khá cao (${caffeine}mg). Sự tỉnh táo hiện tại đang được duy trì một cách gượng ép bằng chất kích thích, che giấu sự mệt mỏi tích lũy của não bộ</p>`;
+                    s3 = `<p><b>Cắt giảm vòng lặp:</b> Cố gắng giảm lượng caffeine nạp vào sau 2 giờ chiều và dịch chuyển thời gian ngủ đêm tăng dần lên mức tối thiểu 6.5 - 7 tiếng để cơ thể tự phục hồi tự nhiên</p>`;
                 } else {
-                    p3 = `<p><b>Khả năng phục hồi thấp hơn nhu cầu:</b> Thời gian ngủ chỉ <b>${sleep} giờ/đêm</b> khiến não bộ không có đủ thời gian để dọn dẹp độc tố và củng cố trí nhớ, trực tiếp bóp nghẹt điểm tập trung của bạn vào ban ngày.</p>`;
-                    s3 = `<p>• <b>Ưu tiên năng lượng gốc:</b> Coi giấc ngủ là một deadline quan trọng không thể trì hoãn. Hãy áp dụng <b>Time Blocking</b> để khóa chặt khung giờ ngủ tối thiểu 6.5 tiếng liên tiếp trong tuần.</p>`;
+                    p3 = `<p><b>Khả năng phục hồi thấp hơn nhu cầu:</b> Thời gian ngủ chỉ <b>${sleep} giờ/đêm</b> khiến não bộ không có đủ thời gian để dọn dẹp độc tố và củng cố trí nhớ, trực tiếp bóp nghẹt điểm tập trung của bạn vào ban ngày</p>`;
+                    s3 = `<p><b>Ưu tiên năng lượng gốc:</b> Coi giấc ngủ là một deadline quan trọng không thể trì hoãn. Hãy áp dụng <b>Time Blocking</b> để khóa chặt khung giờ ngủ tối thiểu 6.5 tiếng liên tiếp trong tuần</p>`;
                 }
             } 
             else if (sleep >= 9.5 && stress >= 7) {
-                p3 = `<p><b>Giấc ngủ đang biến thành cơ chế trốn tránh áp lực:</b> Bạn ngủ tới <b>${sleep} giờ</b> nhưng mức độ stress vẫn chạm ngưỡng ${stress}/10. Ngủ nhiều trong trường hợp này không giúp hồi phục năng lượng mà là biểu hiện tâm lý muốn lánh mặt khỏi khối lượng deadline đang đè nặng.</p>`;
-                s3 = `<p>• <b>Phá vỡ vòng lặp bằng GTD (Getting Things Done):</b> Hãy lấy một tờ giấy viết ra toàn bộ các deadline đang làm bạn lo sợ. Phân loại chúng, chọn ra 1 việc khẩn cấp nhất, áp dụng <b>Quy tắc 5 phút</b> để giải quyết ngay. Khi dòng việc bắt đầu chạy, áp lực tâm lý sẽ tự động tiêu tan và bạn sẽ không còn cảm giác thèm ngủ để trốn tránh nữa.</p>`;
+                p3 = `<p><b>Giấc ngủ đang biến thành cơ chế trốn tránh áp lực:</b> Bạn ngủ tới <b>${sleep} giờ</b> nhưng mức độ stress vẫn chạm ngưỡng ${stress}/10. Ngủ nhiều trong trường hợp này không giúp hồi phục năng lượng mà là biểu hiện tâm lý muốn lánh mặt khỏi khối lượng deadline đang đè nặng</p>`;
+                s3 = `<p><b>Phá vỡ vòng lặp bằng GTD (Getting Things Done):</b> Hãy lấy một tờ giấy viết ra toàn bộ các deadline đang làm bạn lo sợ. Phân loại chúng, chọn ra 1 việc khẩn cấp nhất, áp dụng <b>Quy tắc 5 phút</b> để giải quyết ngay. Khi dòng việc bắt đầu chạy, áp lực tâm lý sẽ tự động tiêu tan và bạn sẽ không còn cảm giác thèm ngủ để trốn tránh nữa</p>`;
             } 
             else if (stress >= 7 && sleep >= 6 && sleep <= 9) {
                 if (exercise >= 20) {
-                    p3 = `<p><b>Cơ thể khỏe mạnh nhưng tâm trí đang quá tải:</b> Nền tảng phục hồi thể chất của bạn rất tốt (Ngủ đủ, có tập thể dục ${exercise} phút). Vấn đề stress cao (${stress}/10) hoàn toàn nằm ở áp lực học tập, thi cử hoặc các mối quan hệ đội nhóm.</p>`;
-                    s3 = `<p>• <b>Quản trị công việc bằng Ma trận Eisenhower:</b> Hãy phân chia các áp lực của bạn thành 4 nhóm. Dành toàn bộ năng lượng giải quyết các việc "Quan trọng & Khẩn cấp" trước, mạnh dạn loại bỏ hoặc từ chối bớt các nhiệm vụ không tạo ra giá trị thực tế để bảo vệ không gian tinh thần.</p>`;
+                    p3 = `<p><b>Cơ thể khỏe mạnh nhưng tâm trí đang quá tải:</b> Nền tảng phục hồi thể chất của bạn rất tốt (Ngủ đủ, có tập thể dục ${exercise} phút). Vấn đề stress cao (${stress}/10) hoàn toàn nằm ở áp lực học tập, thi cử hoặc các mối quan hệ đội nhóm</p>`;
+                    s3 = `<p><b>Quản trị công việc bằng Ma trận Eisenhower:</b> Hãy phân chia các áp lực của bạn thành 4 nhóm. Dành toàn bộ năng lượng giải quyết các việc "Quan trọng & Khẩn cấp" trước, mạnh dạn loại bỏ hoặc từ chối bớt các nhiệm vụ không tạo ra giá trị thực tế để bảo vệ không gian tinh thần</p>`;
                 } else {
-                    p3 = `<p><b>Áp lực tinh thần tích lũy cao:</b> Mức độ stress chạm ngưỡng ${stress}/10 dù giấc ngủ ở mức bình thường. Điều này cảnh báo bạn đang tiến gần đến trạng thái kiệt quệ nhận thức do khối lượng công việc phân bổ chưa hợp lý.</p>`;
-                    s3 = `<p>• <b>Xả nén hệ thần kinh bằng Pomodoro:</b> Đan xen các ca nghỉ ngắn 5 phút để não bộ được thư giãn hoàn toàn. Việc nghỉ ngơi có kế hoạch giúp chặn đứng sự tích lũy stress trong ngày.</p>`;
+                    p3 = `<p><b>Áp lực tinh thần tích lũy cao:</b> Mức độ stress chạm ngưỡng ${stress}/10 dù giấc ngủ ở mức bình thường. Điều này cảnh báo bạn đang tiến gần đến trạng thái kiệt quệ nhận thức do khối lượng công việc phân bổ chưa hợp lý</p>`;
+                    s3 = `<p><b>Xả nén hệ thần kinh bằng Pomodoro:</b> Đan xen các ca nghỉ ngắn 5 phút để não bộ được thư giãn hoàn toàn. Việc nghỉ ngơi có kế hoạch giúp chặn đứng sự tích lũy stress trong ngày</p>`;
                 }
             } 
             else if (exercise < 15 && stress >= 6) {
-                p3 = `<p><b>Trì trệ do thiếu hoạt động thể chất:</b> Việc vận động cơ thể quá ít (chỉ ${exercise} phút) làm giảm quá trình lưu thông oxy và giải phóng endorphin, khiến mức độ stress (${stress}/10) bị ứ đọng và làm giảm sức bền tinh thần.</p>`;
-                s3 = `<p>• <b>Kích hoạt hocmon hạnh phúc:</b> Dành ra đúng 15-20 phút đi bộ nhanh hoặc vận động nhẹ ngoài trời mỗi ngày. Vận động thể chất ngắn chính là liều thuốc xả stress tự nhiên có tốc độ kích hoạt nhanh nhất cho bộ não.</p>`;
+                p3 = `<p><b>Trì trệ do thiếu hoạt động thể chất:</b> Việc vận động cơ thể quá ít (chỉ ${exercise} phút) làm giảm quá trình lưu thông oxy và giải phóng endorphin, khiến mức độ stress (${stress}/10) bị ứ đọng và làm giảm sức bền tinh thần</p>`;
+                s3 = `<p><b>Kích hoạt hocmon hạnh phúc:</b> Dành ra đúng 15-20 phút đi bộ nhanh hoặc vận động nhẹ ngoài trời mỗi ngày. Vận động thể chất ngắn chính là liều thuốc xả stress tự nhiên có tốc độ kích hoạt nhanh nhất cho bộ não</p>`;
             } 
             else if (exercise > 120 && stress >= 6) {
-                p3 = `<p><b>Vận động quá tải (Overtraining):</b> Dành hơn 2 tiếng tập luyện thể chất trong khi stress học tập vẫn ở mức cao có thể là dấu hiệu bạn đang dùng việc tập thể thao như một lá chắn để trì hoãn đối mặt với các công việc quan trọng khác.</p>`;
-                s3 = `<p>• <b>Cân bằng lại cán cân thời gian:</b> Hãy giới hạn thời gian tập thể thao về mức tối ưu (45-60 phút) để giải phóng quỹ thời gian và năng lượng cho việc xử lý dứt điểm các deadline học tập còn tồn đọng.</p>`;
+                p3 = `<p><b>Vận động quá tải (Overtraining):</b> Dành hơn 2 tiếng tập luyện thể chất trong khi stress học tập vẫn ở mức cao có thể là dấu hiệu bạn đang dùng việc tập thể thao như một lá chắn để trì hoãn đối mặt với các công việc quan trọng khác</p>`;
+                s3 = `<p><b>Cân bằng lại cán cân thời gian:</b> Hãy giới hạn thời gian tập thể thao về mức tối ưu (45-60 phút) để giải phóng quỹ thời gian và năng lượng cho việc xử lý dứt điểm các deadline học tập còn tồn đọng</p>`;
             } 
             else if (sleep >= 6.5 && sleep <= 9 && exercise >= 20 && stress <= 5) {
-                p3 = `<p><b>Nền tảng phục hồi sinh học lý tưởng:</b> Hệ thống phục hồi của bạn đang hoạt động cực kỳ hiệu quả với giấc ngủ ${sleep}h chất lượng, có vận động điều độ và stress trong tầm kiểm soát. Đây chính là bệ phóng năng lượng tuyệt vời nâng đỡ kết quả học tập của bạn.</p>`;
-                s3 = `<p>• <b>Duy trì phong độ bền vững:</b> Tiếp tục giữ vững bộ khung sinh hoạt khoa học này để luôn duy trì được trạng thái tinh thần minh mẫn nhất trước mọi áp lực thi cử.</p>`;
+                p3 = `<p><b>Nền tảng phục hồi sinh học lý tưởng:</b> Hệ thống phục hồi của bạn đang hoạt động cực kỳ hiệu quả với giấc ngủ ${sleep}h chất lượng, có vận động điều độ và stress trong tầm kiểm soát. Đây chính là bệ phóng năng lượng tuyệt vời nâng đỡ kết quả học tập của bạn</p>`;
+                s3 = `<p><b>Duy trì phong độ bền vững:</b> Tiếp tục giữ vững bộ khung sinh hoạt khoa học này để luôn duy trì được trạng thái tinh thần minh mẫn nhất trước mọi áp lực thi cử</p>`;
             } 
             else {
-                p3 = `<p><b>Sức khỏe thể chất duy trì ở mức an toàn:</b> Giấc ngủ và mức độ áp lực của bạn hiện tại đang nằm trong tầm kiểm soát ổn định, đủ điều kiện cung cấp năng lượng cho các hoạt động thường ngày.</p>`;
-                s3 = `<p>• <b>Mẹo tối ưu:</b> Cố định thời gian thức dậy mỗi sáng để giữ nhịp đồng hồ sinh học luôn chuẩn xác, tránh hiện tượng uể oải lệch múi giờ vào cuối tuần.</p>`;
+                p3 = `<p><b>Sức khỏe thể chất duy trì ở mức an toàn:</b> Giấc ngủ và mức độ áp lực của bạn hiện tại đang nằm trong tầm kiểm soát ổn định, đủ điều kiện cung cấp năng lượng cho các hoạt động thường ngày</p>`;
+                s3 = `<p><b>Mẹo tối ưu:</b> Cố định thời gian thức dậy mỗi sáng để giữ nhịp đồng hồ sinh học luôn chuẩn xác, tránh hiện tượng uể oải lệch múi giờ vào cuối tuần</p>`;
             }
 
-            // Đẩy toàn bộ nội dung phân tích sâu vào giao diện
             document.getElementById('p-box-1').innerHTML = p1;
             document.getElementById('p-box-2').innerHTML = p2;
             document.getElementById('p-box-3').innerHTML = p3;
@@ -720,7 +717,6 @@
             
             step2.classList.add('opacity-0', 'translate-x-6');
             
-            // ĐƯA GÓC NHÌN LÊN ĐẦU TRANG MƯỢT MÀ KHI QUAY LẠI
             window.scrollTo({ top: 0, behavior: 'smooth' });
 
             setTimeout(() => {
