@@ -37,7 +37,6 @@
             z-index: -1; filter: blur(50px); animation: drift 11s ease-in-out infinite;
         }
 
-        /* Khung hộp Neon siêu phát sáng cho tiêu đề chính */
         .header-neon-box {
             background: rgba(9, 11, 18, 0.85);
             border: 2px solid #80ED99;
@@ -126,10 +125,8 @@
 
     <main class="max-w-6xl mx-auto px-6 pt-12 md:pt-16">
         
-        <!-- ================= TRANG 1: INPUT CHỈ SỐ ================= -->
         <section id="step-input" class="step-transition opacity-100 translate-x-0">
             
-            <!-- KHU VỰC TIÊU ĐỀ: LẤY THEO CHUẨN MẪU ẢNH image_1df501.png -->
             <div class="mb-12 max-w-4xl mx-auto text-center">
                 <div class="header-neon-box p-8 md:p-10 rounded-xl w-full">
                     <span class="text-xs font-black tracking-[0.3em] text-[#80ED99] uppercase drop-shadow-[0_0_8px_rgba(128,237,153,0.5)] block mb-5">
@@ -442,7 +439,6 @@
             step1.classList.add('hidden', 'opacity-0', '-translate-x-6');
             step2.classList.remove('hidden');
             
-            // ĐƯA GÓC NHÌN LÊN ĐẦU TRANG MƯỢT MÀ
             window.scrollTo({ top: 0, behavior: 'smooth' });
 
             setTimeout(() => {
@@ -493,12 +489,85 @@
             if(stress >= 8) stressText = "High";
 
             let metricHTML = '';
-            metricHTML += makeMetricCard("Quỹ thời gian học", study + " h / ngày", study >= 4.0, study >= 4.0 ? "Đủ thời gian nghiên cứu và đọc tài liệu" : "Thời gian tự học quá ít, khó nhớ bài lâu");
-            metricHTML += makeMetricCard("Chất lượng tập trung", focus + " / 100", focus >= 55, focus >= 55 ? "Tập trung tốt, không bị sao nhãng xung quanh" : "Đang học hay bị ngắt quãng, làm việc riêng");
-            metricHTML += makeMetricCard("Thời lượng giấc ngủ", sleep + " h / đêm", sleep >= 6.5, sleep >= 6.5 ? "Ngủ đủ giấc, cơ thể tràn đầy năng lượng" : "Thiếu ngủ trầm trọng, đầu óc hay uể oải");
-            metricHTML += makeMetricCard("Sử dụng Smartphone", phone + " h / ngày", phone <= 4.5, phone <= 4.5 ? "Dùng điện thoại hợp lý, có chừng mực" : "Xem màn hình quá nhiều, tốn thời gian ảo");
-            metricHTML += makeMetricCard("Mức độ Stress", stressText, stress <= 6, stress <= 6 ? "Tinh thần thoải mái, ít gặp áp lực lớn" : "Đang quá căng thẳng, dễ bị quá tải");
-            metricHTML += makeMetricCard("Tỷ lệ nộp bài tập", assign + " %", assign >= 70, assign >= 70 ? "Hoàn thành bài tập đúng hạn và đầy đủ" : "Nợ bài tập nhiều, việc học bị dồn ứ");
+            let studyStatus = study >= 4.0;
+            let studyDesc = "";
+            if (study >= 7.0) {
+                studyDesc = "Quỹ thời gian tự học rất lớn, tinh thần đầu tư học tập cao.";
+            } else if (study >= 4.0) {
+                studyDesc = "Duy trì thời gian tự học ở mức ổn định và hợp lý.";
+            } else if (study >= 1.0) {
+                studyDesc = "Thời gian tự học hơi ít, có thể tăng nhẹ để tăng hiệu quả.";
+            } else {
+                studyDesc = "Thời gian tự học quá ít, chưa đủ để xây dựng hệ thống kiến thức.";
+            }
+            metricHTML += makeMetricCard("Quỹ thời gian học", study + " h / ngày", studyStatus, studyDesc);
+            let focusStatus = focus >= 55;
+            let focusDesc = "";
+            if (focus >= 70) {
+                focusDesc = "Khả năng tập trung xuất sắc, tối ưu hóa tốt thời gian ngồi học.";
+            } else if (focus >= 55) {
+                focusDesc = "Trạng thái tập trung ở mức ổn định, ít bị xao nhãng.";
+            } else {
+                focusDesc = "Dòng suy nghĩ dễ bị ngắt quãng, cần môi trường yên tĩnh hơn.";
+            }
+            metricHTML += makeMetricCard("Chất lượng tập trung", focus + " / 100", focusStatus, focusDesc);
+            let sleepStatus = true;
+            let sleepDesc = "";
+            if (sleep >= 7.0) {
+                sleepStatus = true;
+                sleepDesc = "Tối ưu: Hiệu suất học tập và phục hồi thể chất tốt.";
+            } else if (sleep >= 6.0) {
+                sleepStatus = true;
+                sleepDesc = "Chấp nhận được: Hiệu suất có thể không tối đa nhưng không gặp vấn đề lớn.";
+            } else if (sleep >= 5.0) {
+                sleepStatus = false;
+                sleepDesc = "Cảnh báo: Tích lũy nợ ngủ, bắt đầu làm giảm khả năng học tập.";
+            } else if (sleep >= 4.0) {
+                sleepStatus = false;
+                sleepDesc = "Nguy cơ cao: Suy giảm nhận thức đáng kể, đầu óc uể oải.";
+            } else {
+                sleepStatus = false;
+                sleepDesc = "Nguy cơ rất cao: Không bền vững, ảnh hưởng nghiêm trọng đến sức khỏe và học tập.";
+            }
+            metricHTML += makeMetricCard("Thời lượng giấc ngủ", sleep + " h / đêm", sleepStatus, sleepDesc);
+            let phoneStatus = phone <= 5.5; 
+            let phoneDesc = "";
+            if (phone <= 3.5) {
+                phoneDesc = "Kiểm soát thời gian dùng điện thoại rất tốt và chủ động.";
+            } else if (phone <= 5.5) {
+                phoneDesc = "Mức độ sử dụng thiết bị vừa phải, nằm trong ngưỡng cân bằng.";
+            } else if (phone <= 8.0) {
+                phoneDesc = "Thời gian nhìn màn hình khá cao, dễ làm phân mảnh sự tập trung.";
+            } else if (phone <= 10.0) {
+                phoneDesc = "Sử dụng điện thoại ở mức cao, tốn nhiều thời gian cho không gian ảo.";
+            } else {
+                phoneDesc = "Sử dụng điện thoại quá nhiều, đang chiếm dụng toàn bộ quỹ thời gian trong ngày.";
+            }
+            metricHTML += makeMetricCard("Sử dụng Smartphone", phone + " h / ngày", phoneStatus, phoneDesc);
+            let stressStatus = stress <= 6;
+            let stressDesc = "";
+            if (stress <= 4) {
+                stressDesc = "Tinh thần thoải mái, tâm lý vững vàng trước áp lực.";
+            } else if (stress <= 6) {
+                stressDesc = "Áp lực ở mức vừa phải, có thể dùng làm động lực thúc đẩy.";
+            } else {
+                stressDesc = "Căng thẳng ở mức cao, cần đan xen các quãng nghỉ ngơi ngắn.";
+            }
+            metricHTML += makeMetricCard("Mức độ Stress", stressText, stressStatus, stressDesc);
+            let assignStatus = assign >= 70;
+            let assignDesc = "";
+            if (assign >= 85) {
+                assignDesc = "Hoàn thành bài tập xuất sắc, giữ vững tiến độ chuyên cần.";
+            } else if (assign >= 70) {
+                assignDesc = "Nộp bài đầy đủ và đúng hạn ở các đầu việc cốt lõi.";
+            } else if (assign >= 50) {
+                assignDesc = "Tỷ lệ hoàn thành bài tập trung bình, còn một số bài bị tồn đọng.";
+            } else if (assign >= 30) {
+                assignDesc = "Tỷ lệ nộp bài khá thấp, dễ ảnh hưởng nghiêm trọng đến điểm quá trình.";
+            } else {
+                assignDesc = "Mức cảnh báo: Hầu hết bài tập chưa được hoàn thành, có thể ảnh hưởng trực tiếp tới điểm chuyên cần hoặc giảm khả năng tiếp thu, ghi nhớ kiến thức.";
+            }
+            metricHTML += makeMetricCard("Tỷ lệ nộp bài tập", assign + " %", assignStatus, assignDesc);
             document.getElementById('metricAnalysisContainer').innerHTML = metricHTML;
 
 
@@ -507,27 +576,78 @@
             let s1 = "", s2 = "", s3 = "";
 
             // Ô VUÔNG 1: HỌC TẬP & BÀI TẬP
-            if (study < 4.0 || assign < 70) {
-                p1 += `<div class="space-y-2">
-                            <p><b>Rủi ro tích tụ lỗ hổng:</b> Bạn chỉ dành ${study} giờ tự học và tồn đọng tới ${100 - assign}% khối lượng bài tập. Điều này cho thấy bạn đang rơi vào vòng lặp "trì hoãn thụ động": Sợ bài khó nên không làm, bài dồn lại nhiều quá lại càng sợ và không dám bắt đầu.</p>
-                            <p><b>Tác động tâm lý:</b> Cảm giác nợ bài tập tạo ra một áp lực ngầm vô hình. Mỗi khi bạn đi chơi hay nghỉ ngơi, thâm tâm bạn vẫn thấy bứt rứt, tội lỗi vì chưa làm xong việc, làm suy giảm nghiêm trọng chất lượng cuộc sống.</p>
-                       </div>`;
-                
-                s1 += `<div class="space-y-2">
-                            <p><b>Áp dụng "Quy tắc 5 phút":</b> Đừng cố hoàn thành cả bài tập lớn ngay lập tức. Hãy mở máy lên và cam kết chỉ làm đúng 5 phút (ví dụ: gõ một tiêu đề bài luận, đọc qua 2 câu hỏi). Sau 5 phút, bạn có quyền dừng lại. Bí quyết ở đây là vượt qua lực cản ban đầu để bộ não vào trạng thái làm việc.</p>
-                            <p><b>Phương pháp "Hộp thời gian" (Time-boxing):</b> Khoanh vùng đúng 1 tiếng vào buổi tối (ví dụ: 20h - 21h), tắt hết mọi thứ và chỉ tập trung xử lý các bài tập chuẩn bị đến hạn. Hết giờ thì dừng lại kể cả chưa xong để giữ kỷ luật không nản chí.</p>
-                       </div>`;
-            } else {
-                p1 += `<div class="space-y-2">
-                            <p><b>Vận hành guồng quay xuất sắc:</b> Chúc mừng bạn, việc dành ra ${study} giờ tự học cùng tỷ lệ nộp bài đạt tới ${assign}% chứng tỏ bạn là người có tính tự giác cực kỳ cao và biết sắp xếp thứ tự ưu tiên.</p>
-                            <p><b>Điểm cộng:</b> Bạn luôn chủ động kiểm soát khối lượng kiến thức của mình, không bao giờ phải nếm trải cảm giác thức đêm "học vẹt" hay chạy deadline cuống cuồng trước ngày thi.</p>
-                       </div>`;
-                
-                s1 += `<div class="space-y-2">
-                            <p><b>Học sâu bằng kỹ thuật Feynman:</b> Thay vì chỉ làm bài tập được giao, hãy thử tóm tắt lại kiến thức cốt lõi đó rồi tự giải thích lại cho một người khác (hoặc tự nói trước gương) theo cách đơn giản nhất. Nếu bạn giải thích trôi chảy, bạn đã thực sự làm chủ kiến thức ở mức độ chuyên gia.</p>
-                       </div>`;
+            if (study < 1 && assign < 50 && attendance_pct < 65) {
+                p1 = `<div class="space-y-2">
+                        <p><b>Cần kích hoạt lại bộ khung học tập:</b> Bạn cần đầu tư nhiều thời gian hơn cho việc học, với chỉ <b>${study} giờ</b> tự học hiện tại thì điểm số dự đoán (${gpa_predict}) chưa phải là mục tiêu bạn cần giải quyết nhất. Vấn đề cốt lõi lúc này là bắt tay vào xây dựng một hệ thống học tập cơ bản.</p>
+                    </div>`;
+                    s1 = `<div class="space-y-2">
+                        <p>• <b>Tập trung cốt lõi:</b> Ưu tiên tăng thời lượng học hiệu quả lên từ từ (tuyệt đối không ngồi vào bàn học cùng chiếc điện thoại hay tiếp tục lướt các mạng xã hội) để tâm trí làm quen dần với hệ thống học tập mới.</p>
+                        <p>• <b>Phương pháp Pomodoro chiến thuật:</b> Khi rất khó bắt đầu học, hãy đặt chu kỳ 25 phút tập trung hoàn toàn và 5 phút nghỉ. Phương pháp này cực kỳ phù hợp để vượt qua sự trì hoãn ban đầu, giúp bạn tích lũy thời gian học mà không bị ngợp.</p>
+                    </div>`;
+                }
+            else if (attendance_pct >= 75 && study < 1 && gpa_predict < 6.5) {
+                p1 = `<div class="space-y-2">
+                    <p><b>Chăm chỉ trên lớp nhưng thiếu tự học:</b> Bạn lên lớp rất đầy đủ (${attendance_pct}%), tuy nhiên việc thiếu thời gian tự học (chỉ <b>${study} giờ</b>) khiến kiến thức chưa được tiếp thu và ghi nhớ sâu, dẫn tới điểm dự đoán (${gpa_predict}) chưa được như kỳ vọng.</p>
+                </div>`;
+                s1 = `<div class="space-y-2">
+                    <p>• <b>Tạo thói quen tự học chủ động:</b> Việc nghe giảng trên lớp tuy rất quan trọng, nhưng việc tự học, ôn tập lại bài còn đóng vai trò quan trọng hơn trong việc nâng cao điểm số, thật sự biến kiến thức của thầy cô thành của bản thân.</p>
+                    <p>• <b>Phương pháp Blurting (Nếu có thời gian nghỉ):</b> Ngay sau khi đi học về, hãy lấy một tờ giấy trắng viết nhanh tất cả những gì bạn nhớ trong đầu, sau đó đối chiếu lại với tài liệu gốc để phát hiện lỗ hổng kiến thức.</p>
+                    <p>• <b>Giải pháp tối ưu cho người bận rộn/đi làm thêm:</b> Nếu lịch trình của bạn quá dày và không thể áp dụng Blurting ngay, hãy tận dụng các khoảng thời gian trống ngắn (khi đi xe bus, giờ nghỉ lao tại chỗ làm) để lướt nhanh lại các mục lục hoặc sơ đồ tư duy của bài học trên điện thoại. Việc xem lại ngắn gọn này giúp giữ luồng ghi nhớ mà không tốn quá nhiều quỹ thời gian trong ngày.</p>
+                </div>`;
             }
-
+            else if (study >= 4 && assign < 50) {
+                // Profile 3: Chăm chỉ tự học nhưng mức độ hoàn thành bài chưa cao
+                p1 = `<div class="space-y-2">
+                    <p><b>Chăm chỉ tự học nhưng mức độ hoàn thành bài chưa cao:</b> Bạn đang dành đến <b>${study} giờ</b> để tự học, đây là một điểm tựa rất tốt. Tuy nhiên, tỷ lệ hoàn thành bài tập lại chưa cao (${assign}%). Việc chưa hoàn thành bài tập có thể dẫn tới mất điểm chuyên cần, do đó ảnh hưởng trực tiếp tới điểm dự đoán; hoặc đơn giản hơn, việc chưa hoàn thành bài tập khiến kiến thức khó được tiếp thu, ghi nhớ sâu sắc thông qua thực hành.</p>
+                </div>`;
+                s1 = `<div class="space-y-2">
+                    <p>• <b>Chuyển đổi thước đo mục tiêu:</b> Chuyển từ việc đếm "số giờ tự học" sang đếm "số lượng bài tập hoàn thành". Bạn cần ưu tiên hoàn thành bài tập trước khi tự học mở rộng kiến thức.</p>
+                    <p>• <b>Phương pháp "Eat That Frog" kết hợp Quy tắc 5 phút:</b> Bài tập ở độ khó cao thường tạo ra tâm lý ngại làm, trì hoãn. Hãy xử lý bài tập khó nhất vào đầu buổi học, và mỗi khi gặp bài khó, hãy tự nhủ <i>"mình chỉ làm đúng 5 phút thôi"</i>. Thường khi đã vượt qua được 5 phút đầu, não bộ sẽ tự động cuốn vào luồng tập trung làm việc và học tập.</p>
+                </div>`;
+            }
+            else if (study >= 4 && assign >= 75 && gpa_predict < 6.5) {
+                p1 = `<div class="space-y-2">
+                    <p><b>Đầu tư nhiều thời gian cho học tập nhưng chưa tối ưu chiến thuật học tập:</b> Thời gian tự học và tỷ lệ hoàn thành bài tập của bạn ở mức cao, tuy nhiên, điểm dự đoán (${gpa_predict}) chưa tương xứng có thể có nghĩa rằng việc đầu tư thời gian chưa đem lại hiệu quả. Có thể bạn đã học thuộc lòng, ghi chép thụ động hoặc dành nhiều thời gian ôn các nội dung ít xuất hiện trong bài thi. Ngoài ra, thời gian bạn dành ra cho học tập có thể không được tối ưu khi có nhiều nguồn xao nhãng trong quá trình học, khiến thời gian học không chất lượng.</p>
+                </div>`;
+                s1 = `<div class="space-y-2">
+                    <p>• <b>Áp dụng Nguyên lý Pareto (80/20):</b> Trong mọi môn học, 20% lượng kiến thức cốt lõi sẽ quyết định 80% số câu điểm trong bài thi. Đừng có học dàn trải mọi ngóc ngách của môn học.</p>
+                    <p>• <b>Chiến thuật Retrieval Practice:</b> Thay vì đọc đi đọc lại lý thuyết, hãy chủ động làm bài thi thử, làm quiz, hoặc lật lại các đề thi cũ để kiểm tra ngay khả năng vận dụng.</p>
+                </div>`;
+            }
+            else if (attendance_pct < 40 && gpa_predict < 5.0 && study >= 3) {
+                p1 = `<div class="space-y-2">
+                    <p><b>Hệ thống kiến thức trên lớp bị đứt gãy nghiêm trọng:</b> Việc bỏ lỡ quá nhiều buổi học trên lớp (${attendance_pct}% đi học) đang kéo giảm điểm của bạn. Việc bỏ lỡ kiến thức trên lớp có thể khiến việc tự học lại kiến thức sau đó kém hiệu quả và khó khăn hơn nhiều. Nếu bạn bỏ lỡ các buổi đầu, việc tới lớp các buổi sau có thể gây cảm giác chán nản vì phải đuổi kịp tốc độ học của bài giảng mà bạn bỏ lỡ.</p>
+                </div>`;
+                s1 = `<div class="space-y-2">
+                    <p>• <b>Học bù theo chương:</b> Hãy mượn nguồn tài liệu chính xác từ bạn bè hoặc bài giảng của giảng viên để học bù lại kiến thức từng chương.</p>
+                    <p>• <b>Chiến lược "Chữa cháy sát ngày thi" bằng Eat That Frog:</b> Với quỹ thời gian ít ỏi còn lại, việc học dàn trải hay lặp lại ngắt quãng dài hạn sẽ không khả thi. Bạn cần cố gắng tóm tắt cô đọng phần kiến thức nào là quan trọng nhất và tập trung học cho bằng được phần đó. Hãy biến phần kiến thức cốt lõi/trọng tâm này thành con "ếch" lớn nhất phải giải quyết triệt để trước khi thi.</p>
+                </div>`;
+            }
+            else if (study >= 4 && attendance_pct >= 80 && gpa_predict >= 6.5 && gpa_predict < 8.0) {
+                p1 = `<div class="space-y-2">
+                    <p><b>Khối lượng nỗ lực lớn nhưng hiệu quả đầu ra chưa tương xứng:</b> Bạn rất có kỷ luật (${study}h tự học, ${attendance_pct}% đi học). Kết quả hiện tại ở mức khá ổn, nhưng bạn hoàn toàn có thể bứt phá nếu thay đổi cách bộ não xử lý thông tin.</p>
+                </div>`;
+                s1 = `<div class="space-y-2">
+                    <p>• <b>Nâng cấp lên Active Recall (Hồi tưởng chủ động):</b> Ngừng việc đọc lại ghi chú một cách thụ động hay highlight sách. Hãy đóng sách lại, tự đặt câu hỏi cốt lõi và ép não phải nhớ lại, hoặc tự thiết kế Flashcard để tự ôn luyện hằng ngày.</p>
+                    <p>• <b>Kỹ thuật Feynman:</b> Hãy thử tự giải thích một khái niệm phức tạp của môn học cho một học sinh cấp 2 hiểu bằng ngôn từ đơn giản nhất. Chỗ nào bạn bị khựng hoặc giải thích lúng túng, đó chính là nơi bạn chưa thực sự hiểu sâu.</p>
+                </div>`;
+            }
+            else if (assign < 60 && gpa_predict >= 8.0) {
+                p1 = `<div class="space-y-2">
+                    <p><b>Dựa vào khả năng xử lý ngắn hạn:</b> Bạn có tư duy rất nhạy bén nên điểm số dự đoán vẫn cao (${gpa_predict}). Tuy nhiên, việc lơ là bài tập (${assign}%) cho thấy bạn đang học dồn dập vào phút chót thay vì duy trì một hệ thống ổn định lâu dài.</p>
+                </div>`;
+                s1 = `<div class="space-y-2">
+                    <p>• <b>Quản lý theo Phương pháp ABC:</b> Xếp hạng các đầu việc bài tập của bạn: A (cực kỳ quan trọng, sát hạn), B (quan trọng), C (không làm ngay cũng không sao). Luôn giải quyết dứt điểm việc nhóm A từ sớm để loại bỏ rủi ro quá tải tinh thần sát ngày nộp.</p>
+                </div>`;
+            }
+            else {
+                p1 = `<div class="space-y-2">
+                    <p><b>Hệ thống học tập đang vận hành rất tốt:</b> Bạn đang duy trì một trạng thái cân bằng tuyệt vời giữa tự học (${study}h), hoàn thành bài tập (${assign}%) và kỷ luật lên lớp. Điểm số dự đoán phản ánh chính xác sự đầu tư nghiêm túc này.</p>
+                </div>`;
+                s1 = `<div class="space-y-2">
+                    <p>• <b>Duy trì bằng Time Blocking:</b> Hãy tiếp tục đóng khung lịch trình học tập cố định trong tuần để duy trì phong độ ổn định mà vẫn có nhiều thời gian dành cho các hoạt động giải trí cá nhân.</p>
+                </div>`;
+            }
             // Ô VUÔNG 2: TẬP TRUNG & ĐIỆN THOẠI
             if (focus < 55 || phone > 4.5) {
                 p2 += `<div class="space-y-2">
