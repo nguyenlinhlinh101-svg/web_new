@@ -638,10 +638,6 @@
             else if (gaming >= 3 && stress >= 7) {
                 p2 = `<p><b>Game đóng vai trò thoát khỏi áp lực:</b> Bạn chơi game khá nhiều (${gaming}h) trong giai đoạn stress cao (${stress}/10). Thực tế, game có thể đang là cơ chế phòng vệ tâm lý giúp bạn tạm thời trốn tránh áp lực bài vở thay vì giải trí lành mạnh</p>`;
                 s2 = `<p><b>Đối mặt theo chiến thuật "Eat That Frog":</b> Hãy giải quyết dứt điểm nguồn gốc gây áp lực (đầu việc khó nhất, bài tập sắp đến hạn) ngay vào đầu buổi sáng. Khi gánh nặng tâm lý được tháo gỡ, bạn sẽ thấy mức stress giảm mạnh và có thể chơi game giải trí mà không bị dằn vặt</p>`;
-            } 
-            else if (phone >= 7) {
-                p2 = `<p><b>Thời gian dùng điện thoại khá nhiều:</b> Với hơn <b>${phone} giờ</b> dùng điện thoại một ngày, các khoảng thời gian trống trong ngày có thể bị chiếm dụng bởi thiết bị</p>`;
-                s2 = `<p><b>Chiến lược Deep Work (Làm việc sâu):</b> Thiết lập các khung giờ vàng trong ngày (ví dụ 60–120 phút). Trong khung giờ này, cất điện thoại hoàn toàn ở một phòng khác hoặc trong tủ kín, tắt mọi tab không liên quan để bảo vệ bộ não khỏi sự đa nhiệm độc hại</p>`;
             }
             else if (phone >= 10) {
                 p2 = `<p><b>Màn hình số đang lấp đầy mọi khoảng trống:</b> Với hơn <b>${phone} giờ</b> dùng điện thoại một ngày, các khoảng thời gian trống trong ngày gần như đều bị chiếm dụng bởi thiết bị, làm cạn kiệt năng lượng tư duy sâu</p>`;
@@ -680,7 +676,7 @@
             } 
             else if (stress >= 7 && sleep >= 6 && sleep <= 9) {
                 if (exercise >= 20) {
-                    p3 = `<p><b>Cơ thể khỏe mạnh nhưng tâm trí đang quá tải:</b> Nền tảng phục hồi thể chất của bạn rất tốt (Ngủ đủ, có tập thể dục ${exercise} phút). Vấn đề stress cao hoàn toàn nằm ở áp lực học tập, thi cử hoặc các mối quan hệ đội nhóm</p>`;
+                    p3 = `<p><b>Cơ thể khỏe mạnh nhưng tâm trí đang quá tải:</b> Nền tảng phục hồi thể chất của bạn rất tốt (Ngủ đủ, có tập thể dục ${exercise} phút). Vấn đề stress cao (${stress}/10) hoàn toàn nằm ở áp lực học tập, thi cử hoặc các mối quan hệ đội nhóm</p>`;
                     s3 = `<p><b>Quản trị công việc bằng Ma trận Eisenhower:</b> Hãy phân chia các áp lực của bạn thành 4 nhóm. Dành toàn bộ năng lượng giải quyết các việc "Quan trọng & Khẩn cấp" trước, mạnh dạn loại bỏ hoặc từ chối bớt các nhiệm vụ không tạo ra giá trị thực tế để bảo vệ không gian tinh thần</p>`;
                 } else {
                     p3 = `<p><b>Áp lực tinh thần tích lũy cao:</b> Mức độ stress chạm ngưỡng ${stress}/10 dù giấc ngủ ở mức bình thường. Điều này cảnh báo bạn đang tiến gần đến trạng thái kiệt quệ nhận thức do khối lượng công việc phân bổ chưa hợp lý</p>`;
